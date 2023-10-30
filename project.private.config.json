@@ -1,0 +1,19 @@
+{
+    "condition": {
+        "miniprogram": {
+            "current": -1,
+            "list": [
+                {
+                    "id": 1698313869200,
+                    "name": "pages/map/index",
+                    "pathName": "pages/home/index",
+                    "query": "",
+                    "scene": "011001",
+                    "launchFrom": "search_used_list",
+                    "location": "",
+                    "mockUpdateType": "Noupdate"
+                }
+            ]
+        }
+    }
+}

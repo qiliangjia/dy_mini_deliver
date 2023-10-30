@@ -1,0 +1,61 @@
+<view class="layout">
+    <view class="block">
+        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/header.png" mode="widthFix" class="header" />
+        <view class="company">北京纵横贸易有限公司</view>
+        <view class="tips">
+            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon2.png" mode="widthFix" />
+        </view>
+        <view class="title">公司简介</view>
+        <view class="detail">北京纵横贸易有限公司，销售电子产品、机械设备、纺织品、服装、日用品、文具用品、体育用品、工艺品、建材、五金交电、化工</view>
+        <view class="br"></view>
+        <view class="title">地址</view>
+        <view class="address">
+            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon7.png" style="width: 28rpx;"
+                mode="widthFix"></image>
+            <text>北京市朝阳区东三环中路89号</text>
+            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon1.png" class="icon" mode="widthFix"
+                bindtap="junmptoMap">
+            </image>
+        </view>
+    </view>
+    <view class="block" style="padding-bottom: 220rpx;">
+        <view class="tab">
+            <view tt:for="{{tabList}}" tt:key="index" class="{{ tab === item.value ? 'tab-block-yes':'tab-block' }}"
+                bindtap="changeTab" data-index="{{item.value}}">
+                {{item.name}}
+            </view>
+        </view>
+        <view class="tab-title">
+            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon6.png" mode="widthFix"></image>
+            业务
+        </view>
+        <view class="row" tt:for="{{list}}" tt:key="index">
+            {{item.name}}
+            <view class="row-button" bindtap="sendSms" data-content="{{item.name+'-询价'}}">询价</view>
+        </view>
+        <view class="tab-title" style="margin-top: 40rpx;">
+            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon5.png" mode="widthFix"></image>
+            相册
+        </view>
+        <view class="image">
+            <image tt:for="{{imageList}}" tt:key="index" src="{{item}}" mode="widthFix" bindtap="previewImage"
+                data-index="{{index}}"></image>
+        </view>
+    </view>
+    <view class="bottom">
+        <view class="button">
+            <view class="button-phone" bindtap="makePhone">
+                <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon4.png"
+                    style="width: 37rpx;margin-right: 20rpx;" mode="widthFix"></image>
+                拨打电话
+            </view>
+            <view class="button-yh" bindtap="sendSms" data-content="{{'有优惠时提醒我'}}">
+                有优惠时提醒我
+            </view>
+        </view>
+    </view>
+</view>
+
+<popup-layer show="{{show}}" bind:close="close" />
+
+<subscribe-popup show="{{subscribe}}" bind:close="close" />

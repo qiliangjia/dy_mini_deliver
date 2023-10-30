@@ -1,0 +1,16 @@
+<view class="drawer_screen" wx:if="{{show}}" bind:tap="onClose"></view>
+<view class="wrapper" wx:if="{{show}}">
+    <view class="black">
+        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/top.png" style="width: 100%;" mode="widthFix">
+        </image>
+        <view class="white">
+            <view class="text" style="margin-top: -40rpx;">来都来了</view>
+            <view class="text">关注下再走吧</view>
+            <view class="header">
+                <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/header.png"></image>
+            </view>
+            <view class="company">纵横贸易</view>
+            <view class="button" bindtap="followAwemeUser">好的</view>
+        </view>
+    </view>
+</view>
