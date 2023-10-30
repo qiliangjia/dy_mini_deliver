@@ -46,6 +46,7 @@
     text-align: left;
     font-size: 32rpx;
     margin: 10rpx 0rpx;
+    font-weight: 500;
 }
 
 .detail {

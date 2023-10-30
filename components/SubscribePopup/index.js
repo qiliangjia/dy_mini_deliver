@@ -1,4 +1,3 @@
-// /Users/macbook/mac/dy_miniapp/nezha_dy_miniapp/nezha_dy_miniapp/components/CouponLayer/index/index.js
 
 Component({
   data: {
