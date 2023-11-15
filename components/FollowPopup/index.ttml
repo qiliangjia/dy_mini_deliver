@@ -1,6 +1,6 @@
 <view class="drawer_screen" wx:if="{{show}}" bind:tap="onClose"></view>
 <view class="wrapper" wx:if="{{show}}">
     <view class="black">
-        <view class="button" bindtap="jumpto">前往查看</view>
+        <view class="button" bindtap="follow">好的</view>
     </view>
 </view>

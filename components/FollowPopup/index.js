@@ -17,9 +17,8 @@ Component({
     onClose() {
       this.triggerEvent("close");
     },
-    jumpto() {
+    follow() {
       this.triggerEvent("button");
-    },
-    
+    }
   }
 })

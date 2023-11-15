@@ -1,61 +1,28 @@
 <view class="layout">
-    <view class="block">
-        <image src="/image/header.png" mode="widthFix" class="header" />
-        <view class="company">江苏长江粮油科技有限公司</view>
-        <view class="tips">
-            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon2.png" mode="widthFix" />
-        </view>
-        <view class="title">公司简介</view>
-        <view class="detail">江苏长江粮油科技有限公司是一家集食用油仓储、加工、罐装、销售为一体的科技类工贸型企业。公司选址紧临长江深水港，水陆交通便利，区位优越，物流通畅。厂区占地102亩，注册资本1.8958亿元人民币，是一家由民营和国资共同组建的混合制企业。公司建有食用油储罐11万立方，成品立体仓库5000平方米，并配有自动化、半自动化灌装线，满足各种业务场景需求。</view>
-        <view class="br"></view>
-        <view class="title">地址</view>
-        <view class="address">
-            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon7.png" style="width: 28rpx;"
-                mode="widthFix"></image>
-            <text>江苏省仪征市长城路6号</text>
-            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon1.png" class="icon" mode="widthFix"
-                bindtap="junmptoMap">
-            </image>
-        </view>
+    <swiper bindchange="swiperChange" class="swiper" circular="true">
+        <block tt:for="{{background}}" tt:key="index">
+            <swiper-item>
+                <view class="swiper-item">
+                    <image class="img" bindtap="previewImage" data-index="{{index}}" data-list="{{background}}"
+                        src="{{item}}" mode="widthFix" />
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="swiper-block">
+        <text tt:for="{{background}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
-    <view class="block" style="padding-bottom: 220rpx;">
-        <view class="tab">
-            <view tt:for="{{tabList}}" tt:key="index" class="{{ tab === item.value ? 'tab-block-yes':'tab-block' }}"
-                bindtap="changeTab" data-index="{{item.value}}">
-                {{item.name}}
-            </view>
-        </view>
-        <view class="tab-title">
-            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon6.png" mode="widthFix"></image>
-            业务
-        </view>
-        <view class="row" tt:for="{{list}}" tt:key="index">
-            {{item.name}}
-            <view class="row-button" bindtap="sendSms" data-content="{{item.name+'-询价'}}">询价</view>
-        </view>
-        <view class="tab-title" style="margin-top: 40rpx;">
-            <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon5.png" mode="widthFix"></image>
-            相册
-        </view>
-        <view class="image">
-            <image tt:for="{{imageList}}" tt:key="index" src="{{item}}" mode="widthFix" bindtap="previewImage"
-                data-index="{{index}}"></image>
-        </view>
+    <view class="image-block">
+        <image class="image" tt:for="{{background}}" tt:key="index" src="{{item}}" bindtap="previewImage"
+            data-index="{{index}}" data-list="{{background}}" mode="widthFix"></image>
     </view>
-    <view class="bottom">
-        <view class="button">
-            <view class="button-phone" bindtap="makePhone">
-                <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/icon4.png"
-                    style="width: 37rpx;margin-right: 20rpx;" mode="widthFix"></image>
-                拨打电话
-            </view>
-            <view class="button-yh" bindtap="sendSms" data-content="{{'有优惠时提醒我'}}">
-                有优惠时提醒我
-            </view>
-        </view>
+    <view class="button" bindtap="button">
+        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
+        建立联系
+        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
     </view>
 </view>
 
-<popup-layer show="{{show}}" bind:close="close" />
+<popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />
 
-<subscribe-popup show="{{subscribe}}" bind:close="close" />
+<follow-popup show="{{follow}}" bind:close="closeFollow" bind:button="followAwemeUser" />

@@ -1,6 +1,6 @@
 {
     "usingComponents": {
         "popup-layer": "/components/PopupLayer/index",
-        "subscribe-popup": "/components/SubscribePopup/index"
+        "follow-popup": "/components/FollowPopup/index"
     }
 }
