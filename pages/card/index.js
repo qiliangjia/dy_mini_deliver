@@ -23,10 +23,10 @@ Page({
     }).then(({
       data
     }) => {
-      if (data.code === 0) {
+      if (data.code === 0 && data?.data?.result) {
         this.setData({
-          miniappInfo: data?.data?.data?.result?.miniInfo || [],
-          companyInfo: data?.data?.data?.result?.companyInfo || []
+          miniappInfo: data?.data?.result?.miniInfo || [],
+          companyInfo: data?.data?.result?.companyInfo || []
         })
         tt.hideLoading();
       }
@@ -69,6 +69,12 @@ Page({
     });
   },
   sendSms(e) {
+    if (!this.data.miniappInfo?.phone) {
+      tt.showToast({
+        title: '请完善信息',
+      });
+      return
+    }
     tt.sendSms({
       phoneNumber: this.data.miniappInfo.phone,
       content: "测试",

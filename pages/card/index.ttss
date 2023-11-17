@@ -30,11 +30,9 @@
 
 .head {
     width: 159rpx;
-    height: 184rpx;
     position: absolute;
     right: 20rpx;
     top: 15rpx;
-    background-color: black;
 }
 
 .detail {

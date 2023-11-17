@@ -1,7 +1,7 @@
 <view class="layout">
     <image class="bg" src="/image/bg.png" mode="widthFix"></image>
     <view class="block">
-        <image class="head" src="{{miniappInfo.logo[0].url}}"></image>
+        <image class="head" src="/image/icon-bg.png" mode="widthFix"></image>
         <view class="comany">{{companyInfo.companyName}}</view>
         <view class="detail">
             <view class="icon">
