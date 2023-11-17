@@ -112,4 +112,14 @@
     position: absolute;
     right: 120rpx;
     bottom: 8rpx;
+    animation: autoZoom 1s infinite alternate;
 }
+
+@keyframes autoZoom {
+    0% {
+      transform: scale(0.8);
+    }
+    100% {
+      transform: scale(1);
+    }
+  }
