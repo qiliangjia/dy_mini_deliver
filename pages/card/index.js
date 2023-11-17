@@ -4,7 +4,7 @@ Page({
     show: false,
     follow: false,
     miniappInfo: [],
-    current: 0
+    companyInfo: []
   },
   onLoad: function (options) {
     this.getInfo()
@@ -25,7 +25,8 @@ Page({
     }) => {
       if (data.code === 0) {
         this.setData({
-          miniappInfo: data.data.data.result.miniInfo
+          miniappInfo: data?.data?.data?.result?.miniInfo || [],
+          companyInfo: data?.data?.data?.result?.companyInfo || []
         })
         tt.hideLoading();
       }
@@ -99,4 +100,4 @@ Page({
       }
     });
   },
-});
+})
