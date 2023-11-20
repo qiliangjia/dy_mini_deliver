@@ -1,0 +1,4 @@
+<view class="layout">
+    <image tt:for="{{images}}" tt:key="index" class="img" src="{{item}}" mode="aspectFill" bindtap="previewImage"
+        data-index="{{index}}"></image>
+</view>

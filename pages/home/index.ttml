@@ -1,25 +1,3 @@
 <view class="layout">
-    <image class="bg" src="/image/bg.png" mode="widthFix"></image>
-    <swiper bindchange="swiperChange" class="swiper" circular="true">
-        <block tt:for="{{images}}" tt:key="index">
-            <swiper-item>
-                <view class="swiper-item">
-                    <image class="img" src="{{item}}" mode="widthFix" />
-                </view>
-            </swiper-item>
-        </block>
-    </swiper>
-    <view class="swiper-block">
-        <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
-    </view>
-    <image class="bg-img" src="/image/bt-bg.png" mode="widthFix"></image>
-    <button class="button" open-type="getPhoneNumber" agreement="" bindgetphonenumber="getphonenumber">
-        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-        联系宝通老师
-        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
-    </button>
+    <image class="bg" src="/image/bg.png" mode="widthFix" bindtap="jumptoButton"></image>
 </view>
-
-<popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />
-
-<follow-popup show="{{follow}}" bind:close="closeFollow" bind:button="followAwemeUser" />
