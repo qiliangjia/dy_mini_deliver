@@ -1,30 +1,55 @@
-<view class="layout">
-    <swiper bindchange="swiperChange" class="swiper" circular="true">
-        <block tt:for="{{miniappInfo}}" tt:key="index">
-            <swiper-item>
-                <view class="swiper-item">
-                    <image class="img" bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo}}"
-                        src="{{item}}" mode="widthFix" />
-                </view>
-            </swiper-item>
-        </block>
-    </swiper>
-    <view class="swiper-block">
-        <text tt:for="{{miniappInfo}}" tt:key="index"
-            class="active {{current === index ? 'selected':''}}"></text>
+<view class="tab">
+    <view class="{{tab == 1 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="1">首页</view>
+    <view class="{{tab == 2 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="2">效率工具</view>
+    <view class="{{tab == 3 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="3">联系我们</view>
+</view>
+<view class="css" wx:if="{{tab == 1}}">
+    <view class="img">
+        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg" mode="widthFix" />
+        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg" mode="widthFix" />
+        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg" mode="widthFix" />
     </view>
-    <view class="image-block">
-        <image class="image" tt:for="{{miniappInfo}}" tt:key="index" src="{{item}}"
-            bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo}}" mode="widthFix">
-        </image>
-    </view>
-    <view class="button" bindtap="sendSms">
-        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-        建立联系
-        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
+    <!-- <view class="jumpto-button" bind:tap="jumptoUser">点击进入</view> -->
+    <view class="bottom">
+        <view class="bottom_text" bindtap="editTab" data-tab="3">联系我</view>
+        <view class="bottom_text" bindtap="editTab" data-tab="3">意见反馈</view>
     </view>
 </view>
-
-<popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />
-
-<follow-popup show="{{follow}}" bind:close="closeFollow" bind:button="followAwemeUser" />
+<view class="container timer {{isRuning ? 'timer--runing': ''}}" wx:if="{{tab == 2}}">
+    <view class="timer_main">
+        <view class="timer_time-wrap">
+            <view class="timer_progress_mask"></view>
+            <view class="timer_progress timer_left">
+                <view class="timer_circle timer_circle--left" style="transform: rotate({{leftDeg}}deg);"></view>
+            </view>
+            <view class="timer_progress timer_right">
+                <view class="timer_circle timer_circle--right" style="transform: rotate({{rightDeg}}deg);"></view>
+            </view>
+            <text wx:if="{{!completed}}" class="timer_time">{{remainTimeText}}</text>
+            <text wx:if="{{isRuning}}" animation="{{nameAnimation}}" class="timer_taskName">{{taskName}}{{completed ?
+                '已完成！' : '中'}}</text>
+            <image wx:if="{{completed}}" class="timer_done" src="../../image/complete.png"></image>
+        </view>
+        <input type="text" placeholder-style="text-align:center" class="timer_inputname" bindinput="changeLogName"
+            placeholder="给您的任务取个名字吧" />
+    </view>
+    <view class="timer_footer">
+        <view bindtap="startTimer" data-type="work"
+            class="timer_ctrl {{isRuning && timerType == 'rest' ? 'hide' : ''}}">{{isRuning ? '完成': '工作'}}</view>
+        <view bindtap="startTimer" data-type="rest"
+            class="timer_ctrl {{isRuning && timerType == 'work' ? 'hide' : ''}}">{{isRuning ? '完成': '休息'}}</view>
+    </view>
+</view>
+<view class="css" wx:if="{{tab == 3}}">
+    <view class="black">
+        <view class="input">
+            <view class="black_title">投诉建议</view>
+            <view class="textarea">
+                <textarea bindinput="tousuInput" value="{{tousu}}" />
+            </view>
+        </view>
+        <view class="flex">
+            <view class="button" bindtap="submit">提交</view>
+        </view>
+    </view>
+</view>

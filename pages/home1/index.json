@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+        "popup-layer": "/components/PopupLayer/index",
+        "follow-popup": "/components/FollowPopup/index"
+    }
+}

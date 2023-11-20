@@ -1,0 +1,30 @@
+<view class="layout">
+    <swiper bindchange="swiperChange" class="swiper" circular="true">
+        <block tt:for="{{miniappInfo}}" tt:key="index">
+            <swiper-item>
+                <view class="swiper-item">
+                    <image class="img" bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo}}"
+                        src="{{item}}" mode="widthFix" />
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="swiper-block">
+        <text tt:for="{{miniappInfo}}" tt:key="index"
+            class="active {{current === index ? 'selected':''}}"></text>
+    </view>
+    <view class="image-block">
+        <image class="image" tt:for="{{miniappInfo}}" tt:key="index" src="{{item}}"
+            bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo}}" mode="widthFix">
+        </image>
+    </view>
+    <view class="button" bindtap="sendSms">
+        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
+        建立联系
+        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
+    </view>
+</view>
+
+<popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />
+
+<follow-popup show="{{follow}}" bind:close="closeFollow" bind:button="followAwemeUser" />
