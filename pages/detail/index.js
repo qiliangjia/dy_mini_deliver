@@ -2,16 +2,16 @@
 Page({
   data: {
     images: [
-      '/image/1.jpeg',
-      '/image/2.jpeg',
-      '/image/3.jpeg',
-      '/image/4.jpeg',
-      '/image/5.jpeg',
-      '/image/6.jpeg',
-      '/image/7.jpeg',
-      '/image/8.jpeg',
-      '/image/9.jpeg',
-      '/image/10.jpeg'
+      'https://static.qiliangjia.com/static/dy-mini/meitu/1.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/2.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/3.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/4.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/5.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/6.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/7.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/8.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/9.jpeg',
+      'https://static.qiliangjia.com/static/dy-mini/meitu/10.jpeg'
     ]
   },
   onLoad: function (options) {
@@ -22,7 +22,6 @@ Page({
     const {
       index
     } = e.currentTarget.dataset
-    console.log(index);
     tt.previewImage({
       current: imageList[index],
       urls: imageList,
