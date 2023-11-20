@@ -1,21 +1,21 @@
 <view class="layout">
     <swiper bindchange="swiperChange" class="swiper" circular="true">
-        <block tt:for="{{miniappInfo.banner}}" tt:key="index">
+        <block tt:for="{{miniappInfo}}" tt:key="index">
             <swiper-item>
                 <view class="swiper-item">
-                    <image class="img" bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo.banner}}"
-                        src="{{item.url}}" mode="widthFix" />
+                    <image class="img" bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo}}"
+                        src="{{item}}" mode="widthFix" />
                 </view>
             </swiper-item>
         </block>
     </swiper>
     <view class="swiper-block">
-        <text tt:for="{{miniappInfo.banner}}" tt:key="index"
+        <text tt:for="{{miniappInfo}}" tt:key="index"
             class="active {{current === index ? 'selected':''}}"></text>
     </view>
     <view class="image-block">
-        <image class="image" tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url}}"
-            bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo.companyPhoto}}" mode="widthFix">
+        <image class="image" tt:for="{{miniappInfo}}" tt:key="index" src="{{item}}"
+            bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo}}" mode="widthFix">
         </image>
     </view>
     <view class="button" bindtap="sendSms">
