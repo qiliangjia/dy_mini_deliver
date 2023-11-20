@@ -4,9 +4,21 @@ Page({
     show: false,
     follow: false,
     images: ['/image/bt-banner1.png', '/image/bt-banner.png'],
-    current: 0
+    current: 0,
+    isOnShow: false
   },
-  onLoad: function (options) {},
+  onLoad: function (options) {
+
+  },
+  onShow() {
+    if (this.data.isOnShow) {
+      this.close()
+    } else {
+      this.setData({
+        isOnShow: true
+      })
+    }
+  },
   getphonenumber(e) {
     tt.showLoading({
       title: '获取中...',
