@@ -3,18 +3,11 @@ Page({
   data: {
     show: false,
     follow: false,
-    miniappInfo: [
-      'https://static.qiliangjia.com/static/dy-mini/miniapp/3.jpg',
-      'https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg',
-      'https://static.qiliangjia.com/static/dy-mini/miniapp/1.jpg',
-      'https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg',
-      'https://static.qiliangjia.com/static/dy-mini/miniapp/5.jpg',
-      'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
-    ],
+    miniappInfo: [],
     current: 0
   },
   onLoad: function (options) {
-    // this.getInfo()
+    this.getInfo()
   },
   getInfo() {
     tt.showLoading({
