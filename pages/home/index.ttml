@@ -1,28 +1,23 @@
 <view class="layout">
+    <image class="bg" src="/image/bg.png" mode="widthFix"></image>
     <swiper bindchange="swiperChange" class="swiper" circular="true">
-        <block tt:for="{{miniappInfo.banner}}" tt:key="index">
+        <block tt:for="{{images}}" tt:key="index">
             <swiper-item>
                 <view class="swiper-item">
-                    <image class="img" bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo.banner}}"
-                        src="{{item.url}}" mode="widthFix" />
+                    <image class="img" src="{{item}}" mode="widthFix" />
                 </view>
             </swiper-item>
         </block>
     </swiper>
     <view class="swiper-block">
-        <text tt:for="{{miniappInfo.banner}}" tt:key="index"
-            class="active {{current === index ? 'selected':''}}"></text>
+        <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
-    <view class="image-block">
-        <image class="image" tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url}}"
-            bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo.companyPhoto}}" mode="widthFix">
-        </image>
-    </view>
-    <view class="button" bindtap="sendSms">
+    <image class="bg-img" src="/image/bt-bg.png" mode="widthFix"></image>
+    <button class="button" open-type="getPhoneNumber" agreement="" bindgetphonenumber="getphonenumber">
         <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-        建立联系
+        联系宝通老师
         <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
-    </view>
+    </button>
 </view>
 
 <popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />

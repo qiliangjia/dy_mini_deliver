@@ -3,33 +3,63 @@ Page({
   data: {
     show: false,
     follow: false,
-    miniappInfo: [],
+    images: ['/image/bt-banner.png', '/image/bt-banner1.png'],
     current: 0
   },
-  onLoad: function (options) {
-    this.getInfo()
-  },
-  getInfo() {
+  onLoad: function (options) {},
+  getphonenumber(e) {
     tt.showLoading({
-      title: '加载中...',
+      title: '获取中...',
     });
     const {
-      microapp: {
-        appId
-      }
-    } = tt.getEnvInfoSync();
-    api.getInfo({
-      app_id: appId
-    }).then(({
-      data
-    }) => {
-      if (data.code === 0) {
-        this.setData({
-          miniappInfo: data.data.data.result.miniInfo
-        })
-        tt.hideLoading();
-      }
-    })
+      encryptedData,
+      iv,
+      errMsg,
+      value
+    } = e.detail
+    console.log(e);
+    if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
+      tt.login({
+        success: ({
+          code
+        }) => {
+          console.log(code);
+          // api.getPhone({
+          //   encrypted_data: encryptedData,
+          //   iv,
+          //   code
+          // }).then(({
+          //   data
+          // }) => {
+          //   if (data.code === 0) {
+          //     this.setData({
+          //       ['formData.phone']: data.data.phoneNumber,
+          //     })
+          //     this.setUserForm()
+          //     tt.setStorageSync('formData', this.data.formData);
+          //     tt.hideToast();
+          //     if (source === 2) {
+          //       this.submit()
+          //     }
+          //   } else {
+          //     tt.showToast({
+          //       title: '获取手机号失败',
+          //       icon: 'fail'
+          //     });
+          //   }
+          // })
+        },
+        fail: (res) => {
+          tt.showToast({
+            title: '获取手机号失败',
+            icon: 'fail'
+          });
+          console.log(`login 调用失败`);
+        },
+      });
+    } else {
+      tt.hideToast();
+    }
   },
   close() {
     this.setData({
@@ -77,26 +107,6 @@ Page({
       fail: (err) => {
         console.log("fail", err);
       },
-    });
-  },
-  previewImage(e) {
-    const {
-      index,
-      list
-    } = e.currentTarget.dataset;
-    let array = []
-    list.forEach((e) => {
-      array.push(e.url)
-    })
-    tt.previewImage({
-      current: array[index],
-      urls: array,
-      success: () => {
-        console.log("previewImage success");
-      },
-      fail: (e) => {
-        console.log(e);
-      }
     });
   },
 });

@@ -1,10 +1,17 @@
 .layout {
-    background-color: #F5F5F5;
+    background-color: #F6F7FB;
     min-height: 100vh;
 }
 
+.bg {
+    width: 100%;
+    margin-top: -150rpx;
+}
+
+
 .swiper {
     min-height: 500rpx;
+    margin-top: -300rpx;
 }
 
 .swiper-item {
@@ -28,14 +35,15 @@
 }
 
 .active {
-    width: 40rpx;
+    width: 14rpx;
     height: 8rpx;
     background-color: #D8D8D8;
     border-radius: 4rpx;
-    margin: 0rpx 10rpx;
+    margin: 0rpx 5rpx;
 }
 
 .selected {
+    width: 40rpx;
     background-color: #328AFF;
 }
 
@@ -58,7 +66,7 @@
     align-items: center;
     font-size: 40rpx;
     background: linear-gradient(to right, #FF643C, #FF192E);
-    padding: 50rpx 0rpx;
+    padding: 30rpx 0rpx;
     color: #fff;
 }
 
@@ -70,6 +78,23 @@
 .head {
     width: 89rpx;
     position: absolute;
-    right: 120rpx;
+    right: 100rpx;
     bottom: 8rpx;
+    animation: autoZoom 1s infinite alternate;
+}
+
+.bg-img {
+    width: 100%;
+    margin-top: 20rpx;
+    padding-bottom: 100rpx;
+}
+
+@keyframes autoZoom {
+    0% {
+        transform: scale(0.8);
+    }
+
+    100% {
+        transform: scale(1);
+    }
 }
