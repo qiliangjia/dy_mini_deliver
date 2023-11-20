@@ -23,6 +23,13 @@ Page({
     isRuning: false,
     leftDeg: initDeg.left,
     rightDeg: initDeg.right,
+    list: [
+      '小程序代开发及运营服务',
+      '短视频账号运营服务',
+      '表单获客系统',
+      '智能营销系统',
+      '短视频内容创作数据服务',
+    ],
   },
   onLoad(options) {
   },
@@ -38,7 +45,7 @@ Page({
   },
   jumptoUser() {
     tt.navigateTo({
-      url: "/pages/qrCode1/index",
+      url: "/pages/home1/index",
     });
   },
   submit() {

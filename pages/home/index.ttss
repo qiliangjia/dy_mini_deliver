@@ -47,13 +47,16 @@ page {
 }
 
 .jumpto-button {
-    width: fit-content;
+    width: 200rpx;
     padding: 10rpx 20rpx;
-    margin: 500rpx 0rpx 150rpx 0rpx;
-    background-color: rgba(65, 180, 252, 0.5);
+    margin: 30rpx 0rpx 150rpx 0rpx;
+    background-color: rgba(65, 180, 252, 1);
     color: rgb(255, 255, 255);
     border-radius: 10rpx;
     font-size: 20rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* 联系我们 */
@@ -298,4 +301,60 @@ page {
     position: fixed;
     right: 10rpx;
     bottom: 30rpx;
+}
+
+.list {
+    width: 100%;
+    min-height: 100vh;
+    padding: 37rpx 24rpx 40rpx;
+    box-sizing: border-box;
+    background: url('https://static.qiliangjia.com/static/dy-mini/miniapp/wx/bg.png') no-repeat;
+    background-size: 100%;
+}
+
+.item {
+    width: 100%;
+    height: 207rpx;
+    padding: 16rpx;
+    font-size: 40rpx;
+    color: #000000;
+    position: relative;
+    box-sizing: border-box;
+}
+
+.item-bg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.item-view {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 2;
+    padding-left: 40rpx;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+}
+
+.item-title {
+    font-size: 40rpx;
+    color: #000000;
+    box-sizing: border-box;
+}
+
+.item-num {
+    position: absolute;
+    width: 150rpx;
+    top: 5rpx;
+    right: -15rpx;
+    text-align: center;
+    color: #fff;
+    font-size: 28rpx;
+    box-sizing: border-box;
 }
