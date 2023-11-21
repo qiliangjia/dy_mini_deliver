@@ -1,8 +1,8 @@
 <view class="tab">
     <view class="{{tab == 1 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="1">首页</view>
-    <view class="{{tab == 2 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="2">服务介绍</view>
-    <view class="{{tab == 3 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="3">效率工具</view>
-    <view class="{{tab == 4 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="4">联系我们</view>
+    <!-- <view class="{{tab == 2 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="2">服务介绍</view> -->
+    <view class="{{tab == 2 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="2">效率工具</view>
+    <view class="{{tab == 3 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="3">联系我们</view>
 </view>
 <view class="css" wx:if="{{tab == 1}}">
     <view class="img">
@@ -15,7 +15,7 @@
         <view class="bottom_text" bindtap="editTab" data-tab="3">意见反馈</view>
     </view>
 </view>
-<view class="list" wx:if="{{tab == 2}}">
+<!-- <view class="list" wx:if="{{tab == 2}}">
     <view class="item" wx:for="{{list}}" wx:key="{{item}}">
         <image class="item-bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/wx/block.png" mode="widthFix">
         </image>
@@ -24,9 +24,8 @@
             <view class="item-title">{{item}}</view>
         </view>
     </view>
-
-</view>
-<view class="container timer {{isRuning ? 'timer--runing': ''}}" wx:if="{{tab == 3}}">
+</view> -->
+<view class="container timer {{isRuning ? 'timer--runing': ''}}" wx:if="{{tab == 2}}">
     <view class="timer_main">
         <view class="timer_time-wrap">
             <view class="timer_progress_mask"></view>
@@ -51,7 +50,7 @@
             class="timer_ctrl {{isRuning && timerType == 'work' ? 'hide' : ''}}">{{isRuning ? '完成': '休息'}}</view>
     </view>
 </view>
-<view class="css" wx:if="{{tab == 4}}">
+<view class="css" wx:if="{{tab == 3}}">
     <view class="black">
         <view class="input">
             <view class="black_title">投诉建议</view>
