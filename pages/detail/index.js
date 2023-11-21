@@ -12,7 +12,7 @@ Page({
       url: 'https://static.qiliangjia.com/static/dy-mini/meitu/images.json'
     }).then((res) => {
       this.setData({
-        images: eval(res.data.images)
+        images: res.data.images
       })
     })
   },
