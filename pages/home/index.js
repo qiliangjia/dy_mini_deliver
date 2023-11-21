@@ -115,6 +115,12 @@ Page({
         tt.navigateTo({
           url: '/pages/success/index',
         });
+        this.setData({
+          name: '',
+          phone: '',
+          company: ''
+        })
+        tt.hideLoading();
       }, 1500);
     }
   },
