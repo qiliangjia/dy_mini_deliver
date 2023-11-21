@@ -5,7 +5,7 @@ Page({
   },
   setAd() {
     this.ad = tt.createRewardedVideoAd({
-      adUnitId: "f04kksnbn2vf9w76ov",
+      adUnitId: "pkw4aybkp24yifsfra",
     });
     this.ad.onClose((data) => {
       console.log(data);
