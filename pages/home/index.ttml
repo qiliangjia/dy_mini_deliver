@@ -1,65 +1,32 @@
-<view class="tab">
-    <view class="{{tab == 1 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="1">首页</view>
-    <!-- <view class="{{tab == 2 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="2">服务介绍</view> -->
-    <view class="{{tab == 2 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="2">效率工具</view>
-    <view class="{{tab == 3 ? 'tab_item':'tab_item_no'}}" bindtap="editTab" data-tab="3">联系我们</view>
-</view>
-<view class="css" wx:if="{{tab == 1}}">
-    <view class="img">
-        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg" mode="widthFix"></image>
-        <image src="https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg" mode="widthFix"></image>
-    </view>
-    <view class="jumpto-button" bind:tap="jumptoUser">点击进入</view>
-    <view class="bottom">
-        <view class="bottom_text" bindtap="editTab" data-tab="3">联系我</view>
-        <view class="bottom_text" bindtap="editTab" data-tab="3">意见反馈</view>
-    </view>
-</view>
-<!-- <view class="list" wx:if="{{tab == 2}}">
-    <view class="item" wx:for="{{list}}" wx:key="{{item}}">
-        <image class="item-bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/wx/block.png" mode="widthFix">
+<view class="layout">
+    <view class="pages" tt:if="{{tab == 0}}">
+        <image class="bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/wx/home.png" mode="widthFix">
         </image>
-        <view class="item-view">
-            <view class="item-num">服务{{index + 1}}</view>
-            <view class="item-title">{{item}}</view>
-        </view>
+        <view class="button" bind:tap="jumptoPay">购买服务</view>
     </view>
-</view> -->
-<view class="container timer {{isRuning ? 'timer--runing': ''}}" wx:if="{{tab == 2}}">
-    <view class="timer_main">
-        <view class="timer_time-wrap">
-            <view class="timer_progress_mask"></view>
-            <view class="timer_progress timer_left">
-                <view class="timer_circle timer_circle--left" style="transform: rotate({{leftDeg}}deg);"></view>
-            </view>
-            <view class="timer_progress timer_right">
-                <view class="timer_circle timer_circle--right" style="transform: rotate({{rightDeg}}deg);"></view>
-            </view>
-            <text wx:if="{{!completed}}" class="timer_time">{{remainTimeText}}</text>
-            <text wx:if="{{isRuning}}" animation="{{nameAnimation}}" class="timer_taskName">{{taskName}}{{completed ?
-                '已完成！' : '中'}}</text>
-            <image wx:if="{{completed}}" class="timer_done" src="../../image/complete.png"></image>
-        </view>
-        <input type="text" placeholder-style="text-align:center" class="timer_inputname" bindinput="changeLogName"
-            placeholder="给您的任务取个名字吧" />
-    </view>
-    <view class="timer_footer">
-        <view bindtap="startTimer" data-type="work"
-            class="timer_ctrl {{isRuning && timerType == 'rest' ? 'hide' : ''}}">{{isRuning ? '完成': '工作'}}</view>
-        <view bindtap="startTimer" data-type="rest"
-            class="timer_ctrl {{isRuning && timerType == 'work' ? 'hide' : ''}}">{{isRuning ? '完成': '休息'}}</view>
-    </view>
-</view>
-<view class="css" wx:if="{{tab == 3}}">
-    <view class="black">
-        <view class="input">
-            <view class="black_title">投诉建议</view>
-            <view class="textarea">
-                <textarea bindinput="tousuInput" value="{{tousu}}" />
+    <view class="list" tt:if="{{tab == 1}}">
+        <view class="item" tt:for="{{list}}" tt:key="{{item}}">
+            <image class="item-bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/wx/block.png"
+                mode="widthFix"></image>
+            <view class="item-view">
+                <view class="item-num">服务{{index + 1}}</view>
+                <view class="item-title">{{item}}</view>
             </view>
         </view>
-        <view class="flex">
-            <view class="button" bindtap="submit">提交</view>
+    </view>
+    <view class="product-example" tt:if="{{tab == 2}}">
+        <view class="product-list">
+            <view class="product-item" tt:for="{{productList}}" tt:key="index">
+                <view class="left">{{item}}</view>
+                <view class="btn" bind:tap="handleProductItemClick" data-name="{{item}}">点击查看</view>
+            </view>
+        </view>
+    </view>
+    <view class="tab">
+        <view class="tab-block" tt:for="{{tabList}}" tt:key="index" bind:tap="changeTab" data-tab="{{index}}"
+            data-name="{{item.name}}">
+            <image style="width: 40rpx;" src="{{tab === index ? item.chios_icon : item.icon}}" mode="widthFix" />
+            <text class="{{tab == index ? 'text-good':'text'}}">{{item.name}}</text>
         </view>
     </view>
 </view>
