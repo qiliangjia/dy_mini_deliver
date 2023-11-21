@@ -1,0 +1,8 @@
+<view class="layout">
+    <image class="icon" src="https://static.qiliangjia.com/static/dy-mini/bluev-card/success.png" mode="widthFix" />
+    <view class="text">提交成功！</view>
+    <view class="tips">
+        <view>请注意接听电话</view>
+        <!-- <view>将由专属销售经理为您开通</view> -->
+    </view>
+</view>

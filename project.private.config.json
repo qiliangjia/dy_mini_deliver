@@ -12,6 +12,16 @@
                     "launchFrom": "search_used_list",
                     "location": "",
                     "mockUpdateType": "Noupdate"
+                },
+                {
+                    "id": 1700547188379,
+                    "name": "pages/main/index",
+                    "pathName": "pages/index/index",
+                    "query": "",
+                    "scene": "011001",
+                    "launchFrom": "search_used_list",
+                    "location": "",
+                    "mockUpdateType": "Noupdate"
                 }
             ]
         }
