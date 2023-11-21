@@ -112,7 +112,7 @@ Page({
         title: '提交中...',
       });
       setTimeout(() => {
-        tt.redirectTo({
+        tt.navigateTo({
           url: '/pages/success/index',
         });
       }, 1500);

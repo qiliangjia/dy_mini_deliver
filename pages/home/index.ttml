@@ -1,7 +1,8 @@
 <view class="layout">
     <view class="pages" tt:if="{{tab == 0}}">
-        <image class="bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/wx/home.png" mode="widthFix">
-        </image>
+        <image class="bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg" mode="widthFix" />
+        <image class="bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg" mode="widthFix" />
+        <image class="bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/5.jpg" mode="widthFix" />
         <view class="button" bind:tap="jumptoPay">进入预览</view>
     </view>
     <view class="container" tt:if="{{tab == 1}}">
