@@ -29,7 +29,6 @@ Page({
       errMsg,
       value
     } = e.detail
-    console.log(e);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
       tt.login({
         success: ({
