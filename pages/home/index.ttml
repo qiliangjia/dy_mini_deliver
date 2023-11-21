@@ -14,11 +14,14 @@
     </view>
     <image class="bg-img" src="/image/bg1.png" mode="widthFix"></image>
     <image class="bg-img" src="/image/bg2.png" mode="widthFix"></image>
-    <button class="button" open-type="getPhoneNumber" agreement="" bindgetphonenumber="getphonenumber">
-        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-        建立联系
-        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
-    </button>
+    <form bindsubmit="formSubmit" bindreset="formReset" clue-component-id="{{clueComponentId}}"
+        conversion-target="{{conversionTarget}}">
+        <button class="button" form-type="submit" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
+            <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
+            建立联系
+            <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
+        </button>
+    </form>
 </view>
 
 <popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />

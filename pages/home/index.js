@@ -5,7 +5,9 @@ Page({
     follow: false,
     images: ['/image/bt-banner1.png', '/image/bt-banner.png'],
     current: 0,
-    isOnShow: false
+    isOnShow: false,
+    clueComponentId: '4096c26f58e63589d389bfaab28a4f72', // 这里填写创建的线索组件id
+    conversionTarget: 1,
   },
   onLoad: function (options) {
 
@@ -18,6 +20,12 @@ Page({
         isOnShow: true
       })
     }
+  },
+  formSubmit(e) {
+    console.log('formSubmit: ', e.detail);
+  },
+  formReset() {
+    console.log('formReset');
   },
   getphonenumber(e) {
     tt.showLoading({
