@@ -1,4 +1,3 @@
-
 const GET = "GET";
 const POST = "POST";
 const REQUEST_ENV = 'prod'
@@ -25,6 +24,7 @@ function request(method, url, data = {}, isBase = false) {
 }
 const Api = {
   getInfo: (data) => request(GET, `/project16/company/info`, data),
+  getImages: (data) => request(GET, data.url, data, true)
 };
 module.exports = {
   Api,

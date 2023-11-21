@@ -6,7 +6,7 @@
                 {
                     "id": 1698313869200,
                     "name": "pages/map/index",
-                    "pathName": "pages/home/index",
+                    "pathName": "pages/detail/index",
                     "query": "",
                     "scene": "011001",
                     "launchFrom": "search_used_list",
