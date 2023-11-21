@@ -6,12 +6,12 @@ Page({
         chios_icon: 'https://static.qiliangjia.com/static/dy-mini/miniapp/wx/home-good.png',
       },
       {
-        name: '服务介绍',
+        name: '实用工具',
         icon: 'https://static.qiliangjia.com/static/dy-mini/miniapp/wx/js.png',
         chios_icon: 'https://static.qiliangjia.com/static/dy-mini/miniapp/wx/js-good.png',
       },
       {
-        name: '产品示例',
+        name: '提交资料',
         icon: 'https://static.qiliangjia.com/static/dy-mini/miniapp/wx/xl.png',
         chios_icon: 'https://static.qiliangjia.com/static/dy-mini/miniapp/wx/xl-good.png',
       }
@@ -25,9 +25,14 @@ Page({
       '短视频内容创作数据服务',
     ],
     productList: ["官网小程序(参考图)", "电商(参考图)", "茶铺商城(参考图)", "计时器功能(参考图)"],
+    tousu: ''
   },
   onLoad(options) {},
-
+  jumptoPay() {
+    tt.navigateTo({
+      url: '/pages/home1/index',
+    });
+  },
   changeTab(e) {
     const {
       tab,
@@ -39,30 +44,5 @@ Page({
     wx.setNavigationBarTitle({
       title: name
     });
-  },
-  handleProductItemClick(e) {
-    const {
-      name
-    } = e.currentTarget.dataset
-    if (name === '官网小程序(参考图)') {
-      wx.navigateTo({
-        url: '/pages/miniapp/index',
-      })
-    }
-    if (name === '计时器功能(参考图)') {
-      wx.navigateTo({
-        url: '/pages/timer/index',
-      })
-    }
-    if (name === '电商(参考图)') {
-      wx.navigateTo({
-        url: '/pages/ec/index',
-      })
-    }
-    if (name === '茶铺商城(参考图)') {
-      wx.navigateTo({
-        url: '/pages/tea/index',
-      })
-    }
   },
 });

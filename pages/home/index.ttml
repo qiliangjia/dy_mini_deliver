@@ -2,7 +2,7 @@
     <view class="pages" tt:if="{{tab == 0}}">
         <image class="bg" src="https://static.qiliangjia.com/static/dy-mini/miniapp/wx/home.png" mode="widthFix">
         </image>
-        <view class="button" bind:tap="jumptoPay">购买服务</view>
+        <view class="button" bind:tap="jumptoPay">进入预览</view>
     </view>
     <view class="list" tt:if="{{tab == 1}}">
         <view class="item" tt:for="{{list}}" tt:key="{{item}}">
@@ -14,12 +14,15 @@
             </view>
         </view>
     </view>
-    <view class="product-example" tt:if="{{tab == 2}}">
-        <view class="product-list">
-            <view class="product-item" tt:for="{{productList}}" tt:key="index">
-                <view class="left">{{item}}</view>
-                <view class="btn" bind:tap="handleProductItemClick" data-name="{{item}}">点击查看</view>
+    <view class="list" tt:if="{{tab == 2}}">
+        <view class="black">
+            <view class="input">
+                <view class="black_title">投诉建议</view>
+                <view class="textarea">
+                    <textarea bindinput="tousuInput" value="{{tousu}}" />
+                </view>
             </view>
+            <view class="button" bindtap="submit">提交</view>
         </view>
     </view>
     <view class="tab">
