@@ -9,15 +9,11 @@ Page({
   },
   getImagesList() {
     api.getImages({
-      url: 'https://static.qiliangjia.com/static/dy-mini/meitu/images.js'
+      url: 'https://static.qiliangjia.com/static/dy-mini/meitu/images.json'
     }).then((res) => {
-      try {
-        this.setData({
-          images: eval(res.data)
-        })
-      } catch (error) {
-        console.log(error);
-      }
+      this.setData({
+        images: eval(res.data.images)
+      })
     })
   },
   previewImage(e) {
