@@ -77,7 +77,10 @@ Page({
         },
       });
     } else {
-      tt.hideToast();
+      tt.showToast({
+        title: '请耐心等待',
+        icon: 'success'
+      });
     }
   },
   close() {
