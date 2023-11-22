@@ -78,7 +78,7 @@
 .head {
     width: 89rpx;
     position: absolute;
-    right: 100rpx;
+    right: 30rpx;
     bottom: 8rpx;
     animation: autoZoom 1s infinite alternate;
 }

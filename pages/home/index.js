@@ -6,8 +6,9 @@ Page({
     images: ['/image/bt-banner1.png', '/image/bt-banner.png'],
     current: 0,
     isOnShow: false,
-    clueComponentId: '4096c26f58e63589d389bfaab28a4f72', // 这里填写创建的线索组件id
+    clueComponentId: '3dcb7ec3061ded60b87ead4da7b31028', // 这里填写创建的线索组件id
     conversionTarget: 1,
+    send_mobile: ""
   },
   onLoad: function (options) {
 
@@ -35,39 +36,34 @@ Page({
       encryptedData,
       iv,
       errMsg,
-      value
     } = e.detail
-    console.log(e);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
       tt.login({
         success: ({
           code
         }) => {
-          console.log(code);
-          // api.getPhone({
-          //   encrypted_data: encryptedData,
-          //   iv,
-          //   code
-          // }).then(({
-          //   data
-          // }) => {
-          //   if (data.code === 0) {
-          //     this.setData({
-          //       ['formData.phone']: data.data.phoneNumber,
-          //     })
-          //     this.setUserForm()
-          //     tt.setStorageSync('formData', this.data.formData);
-          //     tt.hideToast();
-          //     if (source === 2) {
-          //       this.submit()
-          //     }
-          //   } else {
-          //     tt.showToast({
-          //       title: '获取手机号失败',
-          //       icon: 'fail'
-          //     });
-          //   }
-          // })
+          api.getPhone({
+            encrypted_data: encryptedData,
+            iv,
+            code,
+            project_id: '10'
+          }).then(({
+            data
+          }) => {
+            console.log(data);
+            if (data.code === 0) {
+              this.setData({
+                send_mobile: data?.data?.send_mobile,
+                show: true
+              })
+              tt.hideToast();
+            } else {
+              tt.showToast({
+                title: '获取手机号失败',
+                icon: 'fail'
+              });
+            }
+          })
         },
         fail: (res) => {
           tt.showToast({
@@ -78,7 +74,10 @@ Page({
         },
       });
     } else {
-      tt.hideToast();
+      tt.showToast({
+        title: '请耐心等待',
+        icon: 'success'
+      });
     }
   },
   close() {
@@ -108,7 +107,7 @@ Page({
   },
   followAwemeUser(e) {
     tt.followAwemeUser({
-      awemeId: "CJLY8888",
+      awemeId: "288115324",
       success: (res) => {
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
@@ -117,10 +116,11 @@ Page({
       },
     });
   },
-  sendSms(e) {
+  sendSms() {
+    if (!this.data.send_mobile) return
     tt.sendSms({
-      phoneNumber: this.data.miniappInfo.phone,
-      content: "测试",
+      phoneNumber: String(this.data.send_mobile),
+      content: "T",
       success: (res) => {
         console.log("success", res);
       },

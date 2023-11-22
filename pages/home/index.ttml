@@ -17,7 +17,7 @@
         conversion-target="{{conversionTarget}}">
         <button class="button" form-type="submit" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
             <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-            联系宝通老师
+            手机登陆联系宝通老师
             <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
         </button>
     </form>

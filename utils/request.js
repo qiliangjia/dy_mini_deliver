@@ -1,8 +1,7 @@
 
 const GET = "GET";
 const POST = "POST";
-const REQUEST_ENV = 'prod'
-const baseUrl = `https://fhl-business-${REQUEST_ENV}.qiliangjia.com`;
+const baseUrl = "https://nezha-bus-prod.qiliangjia.com";
 
 function request(method, url, data = {}, isBase = false) {
   return new Promise((resolve, reject) => {
@@ -24,7 +23,7 @@ function request(method, url, data = {}, isBase = false) {
   });
 }
 const Api = {
-  getInfo: (data) => request(GET, `/project16/company/info`, data),
+  getPhone: (data) => request(GET, `/get/phone/dy_applet_bt`, data),
 };
 module.exports = {
   Api,
