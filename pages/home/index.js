@@ -39,6 +39,7 @@ Page({
       iv,
       errMsg,
     } = e.detail
+    console.log(errMsg);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
       tt.login({
         success: ({
@@ -48,11 +49,10 @@ Page({
             encrypted_data: encryptedData,
             iv,
             code,
-            project_id: '10'
+            project_id: '11'
           }).then(({
             data
           }) => {
-            console.log(data);
             if (data.code === 0) {
               this.setData({
                 send_mobile: data?.data?.send_mobile,
@@ -61,8 +61,8 @@ Page({
               tt.hideToast();
             } else {
               tt.showToast({
-                title: '获取手机号失败',
-                icon: 'fail'
+                title: '1分钟内请不要多次登陆',
+                icon: 'none'
               });
             }
           })
@@ -75,10 +75,12 @@ Page({
           console.log(`login 调用失败`);
         },
       });
+    } else if (errMsg === 'getPhoneNumber:fail auth deny') {
+      tt.hideToast();
     } else {
       tt.showToast({
-        title: '请耐心等待',
-        icon: 'success'
+        title: '请稍后再试',
+        icon: 'none'
       });
     }
   },
@@ -111,9 +113,15 @@ Page({
     tt.followAwemeUser({
       awemeId: "288115324",
       success: (res) => {
+        this.setData({
+          follow: false
+        })
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
       fail: (res) => {
+        this.setData({
+          follow: false
+        })
         console.log("引导关注抖音号失败，错误信息:", res.errMsg);
       },
     });
