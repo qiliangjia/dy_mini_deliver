@@ -11,7 +11,9 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-
+    if (options?.showFollow) {
+      this.close()
+    }
   },
   onShow() {
     if (this.data.isOnShow) {
@@ -88,7 +90,7 @@ Page({
       this.setData({
         follow: true,
       });
-    }, 600);
+    }, 300);
   },
   closeFollow() {
     this.setData({
