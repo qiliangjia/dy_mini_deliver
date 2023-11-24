@@ -18,7 +18,7 @@
         conversion-target="{{conversionTarget}}">
         <button class="button" form-type="submit" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
             <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-            手机登陆并建立联系
+            手机登录并建立联系
             <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
         </button>
     </form>

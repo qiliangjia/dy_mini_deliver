@@ -132,4 +132,10 @@ Page({
       },
     });
   },
+  //视频挂载和分享
+  onShareAppMessage: function (shareOption) {
+    return {
+      title: "查看我公司名片",
+    }
+  },
 });
