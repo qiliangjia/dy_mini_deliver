@@ -16,13 +16,13 @@ Page({
     }
   },
   onShow() {
-    if (this.data.isOnShow) {
-      this.close()
-    } else {
-      this.setData({
-        isOnShow: true
-      })
-    }
+    // if (this.data.isOnShow) {
+    //   this.close()
+    // } else {
+    //   this.setData({
+    //     isOnShow: true
+    //   })
+    // }
   },
   formSubmit(e) {
     console.log('formSubmit: ', e.detail);
@@ -75,13 +75,12 @@ Page({
           console.log(`login 调用失败`);
         },
       });
-    } else if (errMsg === 'getPhoneNumber:fail auth deny') {
-      tt.hideToast();
     } else {
-      tt.showToast({
-        title: '请稍后再试',
-        icon: 'none'
-      });
+      tt.hideToast();
+      this.setData({
+        show: true,
+        send_mobile: '10690920805370'
+      })
     }
   },
   close() {
@@ -90,7 +89,7 @@ Page({
     });
     setTimeout(() => {
       this.setData({
-        follow: true,
+        // follow: true,
       });
     }, 300);
   },
