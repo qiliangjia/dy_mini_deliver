@@ -49,7 +49,7 @@ Page({
             encrypted_data: encryptedData,
             iv,
             code,
-            project_id: '11'
+            project_id: '10'
           }).then(({
             data
           }) => {
@@ -130,7 +130,7 @@ Page({
     if (!this.data.send_mobile) return
     tt.sendSms({
       phoneNumber: String(this.data.send_mobile),
-      content: "T",
+      content: "点击上面链接，加我微信",
       success: (res) => {
         console.log("success", res);
       },
