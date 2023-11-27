@@ -11,6 +11,12 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
+    if (!options?.isPull) {
+      tt.reLaunch({
+        url: '/pages/block/index',
+      });
+      return
+    }
     if (options?.showFollow) {
       this.close()
     }
@@ -112,6 +118,9 @@ Page({
     tt.followAwemeUser({
       awemeId: "61377796419",
       success: (res) => {
+        this.setData({
+          follow: false
+        })
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
       fail: (res) => {
@@ -129,6 +138,25 @@ Page({
       },
       fail: (err) => {
         console.log("fail", err);
+      },
+    });
+  },
+  checkFollowAwemeState() {
+    tt.checkFollowAwemeState({
+      awemeId: "61377796419",
+      success(res) {
+        console.log("调用成功", res);
+        const { hasFollowed } = res;
+        tt.showToast({
+          title: `${hasFollowed ? "已关注" : "暂未关注"}`,
+          icon: "none",
+        });
+      },
+      fail(res) {
+        console.log("调用失败", res);
+      },
+      complete(res) {
+        console.log("调用完成", res);
       },
     });
   },

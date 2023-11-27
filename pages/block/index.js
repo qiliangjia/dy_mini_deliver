@@ -4,7 +4,7 @@ Page({
   },
   onReady() {
     tt.navigateTo({
-      url: '/pages/home/index',
+      url: '/pages/home/index?isPull=true',
     });
   },
   onShow() {
@@ -15,7 +15,7 @@ Page({
       return
     }
     tt.navigateTo({
-      url: '/pages/home/index?showFollow=true',
+      url: '/pages/home/index?showFollow=true&isPull=true',
     });
   },
   //视频挂载和分享
