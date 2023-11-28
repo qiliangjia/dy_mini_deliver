@@ -13,14 +13,11 @@
         <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
     <image class="bg-img" src="/image/bt-bg.png" mode="widthFix"></image>
-    <form bindsubmit="formSubmit" bindreset="formReset" clue-component-id="{{clueComponentId}}"
-        conversion-target="{{conversionTarget}}">
-        <button class="button" form-type="submit" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
-            <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-            手机登陆联系宝通老师
-            <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
-        </button>
-    </form>
+    <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
+        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
+        手机登陆联系宝通老师
+        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
+    </button>
 </view>
 
 <popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />

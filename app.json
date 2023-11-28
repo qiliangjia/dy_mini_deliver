@@ -1,7 +1,7 @@
 {
   "pages": [
-    "pages/block/index",
     "pages/home/index",
+    "pages/block/index",
     "pages/block/index",
     "pages/card/index"
   ],

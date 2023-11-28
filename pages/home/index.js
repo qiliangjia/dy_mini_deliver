@@ -11,12 +11,12 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-    if (!options?.isPull) {
-      tt.reLaunch({
-        url: '/pages/block/index',
-      });
-      return
-    }
+    // if (!options?.isPull) {
+    //   tt.reLaunch({
+    //     url: '/pages/block/index',
+    //   });
+    //   return
+    // }
     if (options?.showFollow) {
       this.close()
     }
@@ -24,16 +24,11 @@ Page({
   onShow() {
     if (this.data.isOnShow) {
       this.close()
+    } else {
+      this.setData({
+        isOnShow: true
+      })
     }
-  },
-  onShow() {
-    // if (this.data.isOnShow) {
-    //   this.close()
-    // } else {
-    //   this.setData({
-    //     isOnShow: true
-    //   })
-    // }
   },
   formSubmit(e) {
     console.log('formSubmit: ', e.detail);
@@ -50,7 +45,7 @@ Page({
       iv,
       errMsg,
     } = e.detail
-    console.log(e);
+    console.log(errMsg);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
       tt.login({
         success: ({
@@ -86,12 +81,14 @@ Page({
           console.log(`login 调用失败`);
         },
       });
-    } else if (errMsg === 'getPhoneNumber:fail auth deny') {
+    } else if (errMsg === 'getPhoneNumber:fail platform auth deny') {
       tt.hideToast();
       this.setData({
         show: true,
         send_mobile: '10690920805370'
       })
+    } else {
+      tt.hideToast();
     }
   },
   close() {
@@ -126,21 +123,13 @@ Page({
         this.setData({
           follow: false
         })
-        this.setData({
-          follow: false
-        })
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
       fail: (res) => {
-        this.setData({
-          follow: false
-        })
         console.log("引导关注抖音号失败，错误信息:", res.errMsg);
       },
     });
   },
-  sendSms() {
-    if (!this.data.send_mobile) return
   sendSms() {
     if (!this.data.send_mobile) return
     tt.sendSms({
@@ -159,7 +148,9 @@ Page({
       awemeId: "61377796419",
       success(res) {
         console.log("调用成功", res);
-        const { hasFollowed } = res;
+        const {
+          hasFollowed
+        } = res;
         tt.showToast({
           title: `${hasFollowed ? "已关注" : "暂未关注"}`,
           icon: "none",
@@ -176,7 +167,7 @@ Page({
   //视频挂载和分享
   onShareAppMessage: function (shareOption) {
     return {
-      title: "查看我公司名片",
+      title: "清北家校｜点击免费领提分秘籍",
     }
   },
 });
