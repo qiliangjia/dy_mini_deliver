@@ -1,6 +1,9 @@
 .layout {
     background-color: #F6F7FB;
     min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .bg {
@@ -32,6 +35,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    margin-bottom: 20rpx;
 }
 
 .active {
@@ -61,6 +65,7 @@
     width: 100%;
     position: fixed;
     bottom: 0;
+    left: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -76,7 +81,7 @@
 }
 
 .head {
-    width: 89rpx;
+    width: 100rpx;
     position: absolute;
     right: 30rpx;
     bottom: 8rpx;
@@ -84,9 +89,8 @@
 }
 
 .bg-img {
-    width: 100%;
-    margin-top: 20rpx;
-    padding-bottom: 100rpx;
+    width: 690rpx;
+    margin: 20rpx 0rpx;
 }
 
 @keyframes autoZoom {

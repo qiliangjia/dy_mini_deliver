@@ -11,7 +11,18 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
+    if (!options?.isPull) {
+      tt.reLaunch({
+        url: '/pages/block/index',
+      });
+      return
+    }
     if (options?.showFollow) {
+      this.close()
+    }
+  },
+  onShow() {
+    if (this.data.isOnShow) {
       this.close()
     }
   },
@@ -39,7 +50,7 @@ Page({
       iv,
       errMsg,
     } = e.detail
-    console.log(errMsg);
+    console.log(e);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
       tt.login({
         success: ({
@@ -75,7 +86,7 @@ Page({
           console.log(`login 调用失败`);
         },
       });
-    } else {
+    } else if (errMsg === 'getPhoneNumber:fail auth deny') {
       tt.hideToast();
       this.setData({
         show: true,
@@ -115,6 +126,9 @@ Page({
         this.setData({
           follow: false
         })
+        this.setData({
+          follow: false
+        })
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
       fail: (res) => {
@@ -127,6 +141,8 @@ Page({
   },
   sendSms() {
     if (!this.data.send_mobile) return
+  sendSms() {
+    if (!this.data.send_mobile) return
     tt.sendSms({
       phoneNumber: String(this.data.send_mobile),
       content: "点击上面链接，加我微信",
@@ -137,5 +153,30 @@ Page({
         console.log("fail", err);
       },
     });
+  },
+  checkFollowAwemeState() {
+    tt.checkFollowAwemeState({
+      awemeId: "61377796419",
+      success(res) {
+        console.log("调用成功", res);
+        const { hasFollowed } = res;
+        tt.showToast({
+          title: `${hasFollowed ? "已关注" : "暂未关注"}`,
+          icon: "none",
+        });
+      },
+      fail(res) {
+        console.log("调用失败", res);
+      },
+      complete(res) {
+        console.log("调用完成", res);
+      },
+    });
+  },
+  //视频挂载和分享
+  onShareAppMessage: function (shareOption) {
+    return {
+      title: "查看我公司名片",
+    }
   },
 });
