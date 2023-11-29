@@ -9,12 +9,12 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-    // if (!options?.isPull) {
-    //   tt.reLaunch({
-    //     url: '/pages/block/index',
-    //   });
-    //   return
-    // }
+    if (!options?.isPull) {
+      tt.reLaunch({
+        url: '/pages/block/index',
+      });
+      return
+    }
     if (options?.showFollow) {
       this.close()
     }
@@ -35,9 +35,6 @@ Page({
     console.log('formReset');
   },
   getphonenumber(e) {
-    tt.showLoading({
-      title: '获取中...',
-    });
     const {
       encryptedData,
       iv,
@@ -45,6 +42,9 @@ Page({
     } = e.detail
     console.log(errMsg);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
+      tt.showLoading({
+        title: '获取中...',
+      });
       tt.login({
         success: ({
           code
@@ -93,11 +93,14 @@ Page({
     this.setData({
       show: false,
     });
-    setTimeout(() => {
-      this.setData({
-        // follow: true,
-      });
-    }, 300);
+    const res = tt.getStorageSync('is_follow');
+    if (!res) {
+      setTimeout(() => {
+        this.setData({
+          follow: true,
+        });
+      }, 300);
+    }
   },
   closeFollow() {
     this.setData({
@@ -116,11 +119,12 @@ Page({
   },
   followAwemeUser(e) {
     tt.followAwemeUser({
-      awemeId: "288115324",
+      awemeId: "tonglaoshi9981",
       success: (res) => {
         this.setData({
           follow: false
         })
+        tt.setStorageSync('is_follow', true);
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
       fail: (res) => {

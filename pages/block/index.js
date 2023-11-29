@@ -14,6 +14,11 @@ Page({
       })
       return
     }
+    const res = tt.getStorageSync('is_follow');
+    if (res) {
+      tt.exitMiniProgram();
+      return
+    }
     tt.navigateTo({
       url: '/pages/home/index?showFollow=true&isPull=true',
     });
