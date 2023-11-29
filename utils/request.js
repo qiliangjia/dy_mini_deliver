@@ -16,7 +16,7 @@ function request(method, url, data = {}, isBase = false) {
         console.log('接口详情：', {
           url: isBase ? url : baseUrl + url,
           data,
-          res: res
+          res: res.data
         });
         resolve(res);
       },
