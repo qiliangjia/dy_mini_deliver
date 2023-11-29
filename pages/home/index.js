@@ -6,8 +6,6 @@ Page({
     images: ['/image/bt-banner1.png', '/image/bt-banner.png'],
     current: 0,
     isOnShow: false,
-    clueComponentId: '3dcb7ec3061ded60b87ead4da7b31028', // 这里填写创建的线索组件id
-    conversionTarget: 1,
     send_mobile: ""
   },
   onLoad: function (options) {

@@ -89,8 +89,7 @@
 }
 
 .bg-img {
-    width: 690rpx;
-    margin: 20rpx 0rpx;
+    width: 100%;
 }
 
 @keyframes autoZoom {
