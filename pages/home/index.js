@@ -70,7 +70,7 @@ Page({
   sendSms(e) {
     tt.sendSms({
       phoneNumber: this.data.miniappInfo.phone,
-      content: "测试",
+      content: "T",
       success: (res) => {
         console.log("success", res);
       },
