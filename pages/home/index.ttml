@@ -4,7 +4,7 @@
         <block tt:for="{{images}}" tt:key="index">
             <swiper-item>
                 <view class="swiper-item">
-                    <image class="img" src="{{item}}" mode="widthFix" />
+                    <image class="img" src="{{item}}" mode="aspectFill" />
                 </view>
             </swiper-item>
         </block>
@@ -12,10 +12,10 @@
     <view class="swiper-block">
         <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
-    <image class="bg-img" src="/image/bt-bg.png" mode="widthFix"></image>
+    <image class="bg-img" src="/image/3.jpg" mode="widthFix"></image>
     <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
         <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-        手机登陆联系宝通老师
+        手机登陆并建立联系
         <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
     </button>
 </view>

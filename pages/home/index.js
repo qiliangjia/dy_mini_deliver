@@ -3,7 +3,7 @@ Page({
   data: {
     show: false,
     follow: false,
-    images: ['/image/bt-banner1.png', '/image/bt-banner.png'],
+    images: ['/image/2.jpg', '/image/1.jpg'],
     current: 0,
     isOnShow: false,
     send_mobile: ""
