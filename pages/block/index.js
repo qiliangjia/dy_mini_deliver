@@ -21,7 +21,7 @@ Page({
   //视频挂载和分享
   onShareAppMessage: function (shareOption) {
     return {
-      title: "清北家校｜点击免费领提分秘籍",
+      title: "",
     }
   },
 })

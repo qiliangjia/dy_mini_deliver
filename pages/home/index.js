@@ -35,9 +35,6 @@ Page({
     console.log('formReset');
   },
   getphonenumber(e) {
-    tt.showLoading({
-      title: '获取中...',
-    });
     const {
       encryptedData,
       iv,
@@ -45,6 +42,9 @@ Page({
     } = e.detail
     console.log(errMsg);
     if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
+      tt.showLoading({
+        title: '获取中...',
+      });
       tt.login({
         success: ({
           code
@@ -165,7 +165,7 @@ Page({
   //视频挂载和分享
   onShareAppMessage: function (shareOption) {
     return {
-      title: "清北家校｜点击免费领提分秘籍",
+      title: "",
     }
   },
 });
