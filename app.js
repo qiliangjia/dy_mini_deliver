@@ -8,5 +8,8 @@ App({
 
       },
     });
+  },
+  onHide(){
+    tt.removeStorageSync('is_follow');
   }
 })

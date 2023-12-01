@@ -1,17 +1,18 @@
 {
     "condition": {
         "miniprogram": {
-            "current": -1,
+            "current": 1698313869200,
             "list": [
                 {
                     "id": 1698313869200,
                     "name": "pages/map/index",
                     "pathName": "pages/home/index",
-                    "query": "",
+                    "query": "ces=1",
                     "scene": "011001",
                     "launchFrom": "search_used_list",
                     "location": "",
-                    "mockUpdateType": "Noupdate"
+                    "mockUpdateType": "Noupdate",
+                    "addType": "manual"
                 }
             ]
         }
