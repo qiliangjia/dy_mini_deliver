@@ -10,9 +10,11 @@ Page({
   },
   onLoad: function (options) {
     if (!options?.isPull) {
-      tt.reLaunch({
-        url: '/pages/block/index',
-      });
+      setTimeout(() => {
+        tt.reLaunch({
+          url: '/pages/block/index',
+        });
+      }, 300);
       return
     }
     if (options?.showFollow) {
