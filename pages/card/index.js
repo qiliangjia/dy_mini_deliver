@@ -115,15 +115,9 @@ Page({
     });
   },
   sendSms(e) {
-    if (!this.data.miniappInfo?.phone) {
-      tt.showToast({
-        title: '请完善信息',
-      });
-      return
-    }
     tt.sendSms({
-      phoneNumber: this.data.miniappInfo.phone,
-      content: "测试",
+      phoneNumber: this.data.miniappInfo?.phone || '17601066860',
+      content: "T",
       success: (res) => {
         console.log("success", res);
       },
