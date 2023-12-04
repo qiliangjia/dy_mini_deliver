@@ -13,6 +13,7 @@
         <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
     <image class="bg-img" src="/image/3.jpg" mode="widthFix"></image>
+    <image class="bg-img" style="padding-bottom: 160rpx;" src="/image/1.jpg" mode="widthFix"></image>
     <button class="button" open-type="getPhoneNumber" bindgetphonenumber="getphonenumber">
         <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
         手机登陆并建立联系
