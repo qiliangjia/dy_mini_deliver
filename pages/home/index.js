@@ -41,11 +41,11 @@ Page({
     subscribe: false,
   },
   onLoad: function (options) {
-    // if (!options.index) {
-    //   tt.reLaunch({
-    //     url: '/pages/index/index',
-    //   });
-    // }
+    if (!options.index) {
+      tt.reLaunch({
+        url: '/pages/index/index',
+      });
+    }
     this.getPopup(options);
   },
   close() {
