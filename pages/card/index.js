@@ -13,6 +13,29 @@ Page({
     tt.showLoading({
       title: '加载中...',
     });
+    const companyInfo = {
+      companyName: '企业供应链',
+    }
+    const miniappInfo = {
+      contactName: '王伟斌',
+      contactPosition: '经理',
+      introduce: '在竞争激烈的商业环境中，拥有一套多功能的企业服务方案对于提高效率和降低成本至关重要。我们的公用万能企业服务致力于为各种规模和行业的企业提供全面的解决方案。无论您是初创企业、 中型企业还是大型企业， 我们的服务都旨在满足您的需求。',
+      companyPhoto: [{
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/1.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/3.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
+      }]
+    }
+    this.setData({
+      miniappInfo,
+      companyInfo
+    })
     const {
       microapp: {
         appId
