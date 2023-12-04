@@ -9,7 +9,7 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-    if (!options?.isPull) {
+    if (options?.isPull !== 'true') {
       setTimeout(() => {
         tt.reLaunch({
           url: '/pages/block/index',
