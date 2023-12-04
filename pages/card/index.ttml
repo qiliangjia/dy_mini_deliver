@@ -8,7 +8,7 @@
                 <image src="/image/icon-name.png" mode="widthFix"></image>
             </view>
             联系人：
-            <text>{{miniappInfo.contactName}}</text>
+            <text>{{ miniappInfo.contactName }}</text>
         </view>
         <view class="detail">
             <view class="icon">

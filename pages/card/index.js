@@ -9,14 +9,41 @@ Page({
   onLoad: function (options) {
     this.getInfo()
   },
-  getInfo() {
+  async getInfo() {
     tt.showLoading({
       title: '加载中...',
     });
-    const companyInfo = {
-      companyName: '企业供应链',
+    try {
+      const {
+        microapp: {
+          appId
+        }
+      } = tt.getEnvInfoSync();
+      const {
+        data
+      } = await api.getInfo({
+        app_id: appId
+      });
+
+      if (data.code === 0 && data?.data?.result) {
+        const {
+          miniInfo,
+          companyInfo
+        } = data.data.result;
+        this.setData({
+          miniappInfo: miniInfo || [],
+          companyInfo: companyInfo || []
+        });
+      }
+    } catch (error) {
+      console.error('Error fetching data:', error);
+    } finally {
+      this.defaultData();
+      tt.hideLoading();
     }
-    const miniappInfo = {
+  },
+  defaultData() {
+    const defaultMiniappInfo = {
       contactName: '王伟斌',
       contactPosition: '经理',
       introduce: '在竞争激烈的商业环境中，拥有一套多功能的企业服务方案对于提高效率和降低成本至关重要。我们的公用万能企业服务致力于为各种规模和行业的企业提供全面的解决方案。无论您是初创企业、 中型企业还是大型企业， 我们的服务都旨在满足您的需求。',
@@ -32,27 +59,23 @@ Page({
         url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
       }]
     }
+    const miniappInfo = this.data.miniappInfo
+    const companyInfo = this.data.companyInfo
+    const updatedMiniappInfo = {
+      ...miniappInfo
+    };
+    if (!companyInfo?.companyName) {
+      this.setData({
+        ['companyInfo.companyName']: '企业供应链'
+      })
+    }
+    Object.keys(defaultMiniappInfo).forEach((field) => {
+      if (miniappInfo[field] === undefined || miniappInfo[field] === null || !miniappInfo[field] || miniappInfo[field].length < 1) {
+        updatedMiniappInfo[field] = defaultMiniappInfo[field];
+      }
+    });
     this.setData({
-      miniappInfo,
-      companyInfo
-    })
-    const {
-      microapp: {
-        appId
-      }
-    } = tt.getEnvInfoSync();
-    api.getInfo({
-      app_id: appId
-    }).then(({
-      data
-    }) => {
-      if (data.code === 0 && data?.data?.result) {
-        this.setData({
-          miniappInfo: data?.data?.result?.miniInfo || [],
-          companyInfo: data?.data?.result?.companyInfo || []
-        })
-        tt.hideLoading();
-      }
+      miniappInfo: updatedMiniappInfo
     })
   },
   close() {
