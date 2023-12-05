@@ -9,18 +9,18 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-    // if (!options?.isPull) {
-    //   tt.reLaunch({
-    //     url: '/pages/block/index',
-    //   });
-    //   return
-    // }
+    const route = getCurrentPages()
+    if (route.length < 2 || route[route.length - 2].route !== 'pages/index/index') {
+      tt.reLaunch({
+        url: '/pages/index/index',
+      });
+    }
     if (options?.showFollow) {
       this.close()
     }
   },
   onShow() {
-    if (this.data.isOnShow) {
+    if (this.data.show) {
       this.close()
     } else {
       this.setData({
@@ -93,11 +93,14 @@ Page({
     this.setData({
       show: false,
     });
-    setTimeout(() => {
-      this.setData({
-        // follow: true,
-      });
-    }, 300);
+    const res = tt.getStorageSync('is_follow');
+    if (!res) {
+      setTimeout(() => {
+        this.setData({
+          // follow: true,
+        });
+      }, 300);
+    }
   },
   closeFollow() {
     this.setData({
@@ -121,6 +124,7 @@ Page({
         this.setData({
           follow: false
         })
+        tt.setStorageSync('is_follow', true);
         console.log("引导关注抖音号成功，已关注:", res.followed);
       },
       fail: (res) => {
@@ -165,7 +169,7 @@ Page({
   //视频挂载和分享
   onShareAppMessage: function (shareOption) {
     return {
-      title: "",
+      title: "查看我公司名片",
     }
   },
 });
