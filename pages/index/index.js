@@ -2,6 +2,9 @@ Page({
   data: {
     isOnShow: false
   },
+  onLoad() {
+    console.log('onLoad');
+  },
   onReady() {
     tt.navigateTo({
       url: '/pages/home/index?isPull=true',

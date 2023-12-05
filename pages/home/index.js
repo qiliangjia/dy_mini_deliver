@@ -9,13 +9,12 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-    if (options?.isPull !== 'true') {
+    if (!options.isPull) {
       setTimeout(() => {
         tt.reLaunch({
           url: '/pages/index/index',
         });
       }, 300);
-      return
     }
     if (options?.showFollow) {
       this.close()
