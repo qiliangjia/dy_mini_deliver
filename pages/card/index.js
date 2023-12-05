@@ -116,12 +116,16 @@ Page({
   },
   sendSms(e) {
     tt.sendSms({
-      phoneNumber: this.data.miniappInfo?.phone || '17601066860',
+      phoneNumber: this.data.miniappInfo.phone,
       content: "T",
       success: (res) => {
         console.log("success", res);
       },
       fail: (err) => {
+        tt.showToast({
+          title: '请完善信息',
+          icon: 'fail'
+        });
         console.log("fail", err);
       },
     });
