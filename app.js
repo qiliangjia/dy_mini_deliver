@@ -10,6 +10,6 @@ App({
     });
   },
   onHide(){
-    tt.removeStorageSync('is_follow');
+    // tt.removeStorageSync('is_follow');
   }
 })

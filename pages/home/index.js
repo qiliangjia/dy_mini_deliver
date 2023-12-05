@@ -9,19 +9,18 @@ Page({
     send_mobile: ""
   },
   onLoad: function (options) {
-    if (!options.isPull) {
-      setTimeout(() => {
-        tt.reLaunch({
-          url: '/pages/index/index',
-        });
-      }, 300);
+    const route = getCurrentPages()
+    if (route.length < 2 || route[route.length - 2].route !== 'pages/index/index') {
+      tt.reLaunch({
+        url: '/pages/index/index',
+      });
     }
     if (options?.showFollow) {
       this.close()
     }
   },
   onShow() {
-    if (this.data.isOnShow) {
+    if (this.data.show) {
       this.close()
     } else {
       this.setData({
