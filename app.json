@@ -1,8 +1,7 @@
 {
   "pages": [
-    "pages/block/index",
-    "pages/home/index",
-    "pages/card/index"
+    "pages/index/index",
+    "pages/home/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

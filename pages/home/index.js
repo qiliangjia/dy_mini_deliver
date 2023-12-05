@@ -12,7 +12,7 @@ Page({
     if (options?.isPull !== 'true') {
       setTimeout(() => {
         tt.reLaunch({
-          url: '/pages/block/index',
+          url: '/pages/index/index',
         });
       }, 300);
       return
