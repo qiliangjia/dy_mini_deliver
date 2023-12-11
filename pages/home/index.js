@@ -19,7 +19,7 @@ Page({
           tt.navigateTo({
             url: '/pages/detail/index',
           });
-        }, 800);
+        }, 1000);
       } else {
         tt.showToast({
           title: '解锁失败！',
