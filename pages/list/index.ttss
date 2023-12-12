@@ -1,0 +1,90 @@
+.layout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner {
+    width: 100%;
+    margin-top: -150rpx;
+}
+
+.search {
+    width: 690rpx;
+    height: 80rpx;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    top: 80rpx;
+    border-radius: 40rpx;
+    padding: 20rpx;
+}
+
+.search image {
+    width: 32rpx;
+    margin-right: 15rpx;
+}
+
+.search input {
+    margin-right: auto;
+    font-size: 30rpx;
+}
+
+.search-button {
+    width: 120rpx;
+    height: 55rpx;
+    border-radius: 30rpx;
+    background: linear-gradient(to left, #FFC50F, #FFEB79);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30rpx;
+}
+
+.list {
+    width: 100%;
+    padding: 40rpx 30rpx;
+    background: #fff;
+    position: absolute;
+    top: 230rpx;
+    border-radius: 30rpx 30rpx 0 0;
+}
+
+.list-item {
+    margin-bottom: 20rpx;
+}
+
+.list-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.list-title {
+    font-weight: bold;
+    font-size: 30rpx;
+}
+
+.list-icon {
+    color: #989CA8;
+    font-size: 24rpx;
+}
+
+.list-icon image {
+    width: 12rpx;
+}
+
+.list-img {
+    margin-top: 20rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.list-img image {
+    width: 160rpx;
+    height: 160rpx;
+    border-radius: 12rpx;
+    border: 1rpx solid #979797;
+}

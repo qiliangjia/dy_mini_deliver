@@ -1,10 +1,10 @@
 .layout {
-    background-color: #000;
+    background: #F0F3FC url('/image/bg1.png') no-repeat;
+    background-size: 100%;
     min-height: 100vh;
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding: 30rpx 0rpx;
+    flex-direction: column;
+    align-items: center;
 }
 
 .bg {

@@ -1,0 +1,23 @@
+<view class="layout">
+    <image class="banner" src="https://static.qiliangjia.com/static/dy-mini/mount/banner.png"></image>
+    <view class="search">
+        <image src="/image/icon-search.png" mode="widthFix"></image>
+        <input placeholder="输入关键词或创作者" bindinput="searchInput"></input>
+        <view class="search-button">搜索</view>
+    </view>
+    <view class="list">
+        <view class="list-item" tt:for="{{list}}" tt:key="index" bindtap="jumpto" data-item="{{item}}">
+            <view class="list-row">
+                <view class="list-title">{{item.dy_no}}</view>
+                <view class="list-icon">
+                    更多
+                    <image src="/image/icon-back.png" mode="widthFix"></image>
+                </view>
+            </view>
+            <view class="list-img">
+                <image tt:for="{{item.list}}" tt:for-item="innerItem" tt:for-index="innerKey" tt:if="{{ innerKey < 4 }}"
+                    src="{{innerItem.img_url}}"></image>
+            </view>
+        </view>
+    </view>
+</view>

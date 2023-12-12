@@ -1,6 +1,6 @@
 const GET = "GET";
 const POST = "POST";
-const REQUEST_ENV = 'prod'
+const REQUEST_ENV = 'stg'
 const baseUrl = `https://fhl-business-${REQUEST_ENV}.qiliangjia.com`;
 
 function request(method, url, data = {}, isBase = false) {
@@ -24,7 +24,8 @@ function request(method, url, data = {}, isBase = false) {
 }
 const Api = {
   getInfo: (data) => request(GET, `/project16/company/info`, data),
-  getImages: (data) => request(GET, data.url, data, true)
+  getImages: (data) => request(GET, data.url, data, true),
+  getUserList: (data) => request(GET, `/mount/puid`, data),
 };
 module.exports = {
   Api,
