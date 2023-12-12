@@ -27,6 +27,7 @@ const Api = {
   getImages: (data) => request(GET, data.url, data, true),
   getUserList: (data) => request(GET, `/mount/puid`, data),
   getDetail: (data) => request(GET, `/mount/user/puid`, data),
+  userStatus: (data) => request(GET, `/mount/state`, data),
 };
 module.exports = {
   Api,

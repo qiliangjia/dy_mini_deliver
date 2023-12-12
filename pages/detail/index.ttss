@@ -70,13 +70,25 @@
     width: 160rpx;
     height: 160rpx;
     margin-bottom: 20rpx;
+    position: relative;
+}
+
+.img-no {
+    width: 160rpx;
+    height: 160rpx;
 }
 
 .img-check {
     width: 160rpx;
     height: 160rpx;
-    margin-bottom: 20rpx;
     border: 4rpx solid #2654EF;
-    border-radius: 28rpx;
+    border-radius: 20rpx;
     position: relative;
+}
+
+.img-icon {
+    width: 40rpx;
+    position: absolute;
+    right: -5rpx;
+    bottom: -5rpx;
 }

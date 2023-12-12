@@ -14,10 +14,9 @@
         </view>
     </view>
     <view class="detail">
-        <view class="img">
-            <image class="{{item.mount_id === mount_id ? 'img-check':'img'}}" tt:for="{{list}}" tt:key="index"
-                src="{{item.img_url}}"></image>
-            <image></image>
+        <view class="img" tt:for="{{list}}" tt:key="index" bindtap="chiosImg" data-item="{{item}}">
+            <image class="{{item.mount_id === mount_id ? 'img-check':'img-no'}}" src="{{item.img_url}}"></image>
+            <image tt:if="{{item.mount_id === mount_id}}" class="img-icon" src="/image/icon-gou.png" mode="widthFix"></image>
         </view>
     </view>
 </view>
