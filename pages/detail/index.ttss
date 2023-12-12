@@ -1,5 +1,6 @@
 .layout {
-    background: #F0F3FC url('/image/bg1.png') no-repeat;
+    width: 100%;
+    background: #F0F3FC url('image/bg.png') no-repeat;
     background-size: 100%;
     min-height: 100vh;
     display: flex;
@@ -7,14 +8,75 @@
     align-items: center;
 }
 
-.bg {
+.top {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 40rpx 0;
 }
 
+.header {
+    width: 320rpx;
+    height: 320rpx;
+    position: relative;
+    border-radius: 20rpx;
+    overflow: hidden;
+}
+
+.header-img {
+    width: 320rpx;
+    height: 320rpx;
+}
+
+.lock {
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lock-icon {
+    width: 120rpx;
+    height: 120rpx;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 60rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.lock image {
+    width: 45rpx;
+}
+
+.button {
+    width: 350rpx;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    padding: 0 30rpx;
+}
 
 .img {
-    width: 335rpx;
-    height: 335rpx;
-    margin: 10rpx;
-    border-radius: 10rpx;
+    width: 160rpx;
+    height: 160rpx;
+    margin-bottom: 20rpx;
+}
+
+.img-check {
+    width: 160rpx;
+    height: 160rpx;
+    margin-bottom: 20rpx;
+    border: 4rpx solid #2654EF;
+    border-radius: 28rpx;
+    position: relative;
 }

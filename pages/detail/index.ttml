@@ -1,3 +1,23 @@
 <view class="layout">
-    
+    <view class="top">
+        <view class="header">
+            <image class="header-img" tt:for="{{list}}" tt:key="index" tt:if="{{item.mount_id === mount_id}}"
+                src="{{item.img_url}}"></image>
+            <view class="lock" tt:if="{{!check}}">
+                <view class="lock-icon">
+                    <image src="/image/icon-suo.png" mode="widthFix"></image>
+                </view>
+            </view>
+        </view>
+        <view class="content">
+            <image bindtap="jumptoButton" class="button" src="/image/download.png" mode="widthFix"></image>
+        </view>
+    </view>
+    <view class="detail">
+        <view class="img">
+            <image class="{{item.mount_id === mount_id ? 'img-check':'img'}}" tt:for="{{list}}" tt:key="index"
+                src="{{item.img_url}}"></image>
+            <image></image>
+        </view>
+    </view>
 </view>
