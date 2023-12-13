@@ -78,8 +78,9 @@
 
 .list-img {
     margin-top: 20rpx;
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160rpx, 1fr));
+    gap: 10rpx;
 }
 
 .list-img image {
@@ -87,4 +88,11 @@
     height: 160rpx;
     border-radius: 12rpx;
     border: 1rpx solid #979797;
+}
+
+.tips{
+    text-align: center;
+    margin: 20rpx;
+    font-size: 28rpx;
+    color: #969799;
 }

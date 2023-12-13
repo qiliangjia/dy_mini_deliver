@@ -1,22 +1,22 @@
 <view class="layout">
-    <view class="top">
-        <view class="header">
-            <image class="header-img" tt:for="{{list}}" tt:key="index" tt:if="{{item.mount_id === mount_id}}"
-                src="{{item.img_url}}"></image>
-            <view class="lock" tt:if="{{!check}}">
-                <view class="lock-icon">
-                    <image src="/image/icon-suo.png" mode="widthFix"></image>
-                </view>
+    <view class="header">
+        <image class="header-img" tt:for="{{list}}" tt:key="index" tt:if="{{item.mount_id === mount_id}}"
+            src="{{item.img_url}}" mode="aspectFill"></image>
+        <view class="lock" tt:if="{{!check}}" bindtap="jumptoButton">
+            <view class="lock-icon">
+                <image src="/image/icon-suo.png" mode="widthFix"></image>
             </view>
         </view>
-        <view class="content">
-            <image bindtap="jumptoButton" class="button" src="/image/download.png" mode="widthFix"></image>
-        </view>
+    </view>
+    <view class="content">
+        <image bindtap="jumptoButton" class="button" src="/image/download.png" mode="widthFix"></image>
     </view>
     <view class="detail">
         <view class="img" tt:for="{{list}}" tt:key="index" bindtap="chiosImg" data-item="{{item}}">
-            <image class="{{item.mount_id === mount_id ? 'img-check':'img-no'}}" src="{{item.img_url}}"></image>
-            <image tt:if="{{item.mount_id === mount_id}}" class="img-icon" src="/image/icon-gou.png" mode="widthFix"></image>
+            <image class="{{item.mount_id === mount_id ? 'img-check':'img-no'}}" src="{{item.img_url}}"
+                mode="aspectFill"></image>
+            <image tt:if="{{item.mount_id === mount_id}}" class="img-icon" src="/image/icon-gou.png" mode="widthFix">
+            </image>
         </view>
     </view>
 </view>

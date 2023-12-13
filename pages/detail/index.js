@@ -1,31 +1,42 @@
 const api = require("../../utils/request").Api;
-
+const {
+  obj2Param
+} = require("../../utils/index")
 Page({
   data: {
     puid: '',
     list: [],
+    ad_placement_id: '',
     check: false,
     mount_id: 0
   },
   onLoad: function (options) {
-    const {
-      query
-    } = tt.getStorageSync('pageInfo');
     this.setData({
-      puid: options?.puid || query.puid || '',
-      mount_id: Number(options?.mount_id) || Number(query?.mount_id)
+      puid: options?.puid || '',
+      mount_id: Number(options?.mount_id) || 0,
+      ad_placement_id: options?.ad_placement_id || ''
     })
+    this.changePage(options)
     this.getInfo()
-    this.setAd()
-    this.changeStatus(1)
+  },
+  changePage(options) {
+    const route = getCurrentPages()
+    if (route.length < 2 || route[route.length - 2].route !== 'pages/list/index') {
+      tt.reLaunch({
+        url: `/pages/list/index?${obj2Param(options)}`,
+      });
+    }
   },
   getInfo() {
+    tt.showLoading({
+      title: '加载中...',
+    });
     const {
       query
     } = tt.getStorageSync('pageInfo');
     api.getDetail({
       puid: this.data.puid,
-      project_id: query?.project_id || ''
+      project_id: query?.project_id || '23'
     }).then(({
       data
     }) => {
@@ -33,15 +44,22 @@ Page({
         this.setData({
           list: data.data.list
         })
+        if (this.data.mount_id < 1) {
+          this.setData({
+            mount_id: data.data.list[0].mount_id
+          })
+        }
       }
+    }).finally(() => {
+      this.setAd()
+      this.changeStatus(1)
+      tt.hideToast();
     })
   },
   setAd() {
-    const {
-      query
-    } = tt.getStorageSync('pageInfo');
     this.ad = tt.createRewardedVideoAd({
-      adUnitId: query.ad_placement_id,
+      // adUnitId: this.data.ad_placement_id,
+      adUnitId: 'f04kksnbn2vf9w76ov',
     });
     this.ad.onClose((data) => {
       tt.hideLoading();
@@ -104,6 +122,7 @@ Page({
     }
     tt.showLoading({
       title: '视频加载中',
+
     });
     this.ad.show();
   },
@@ -111,17 +130,19 @@ Page({
     const {
       mount_id
     } = e.currentTarget.dataset.item
-    tt.reLaunch({
-      url: `/pages/detail/index?puid=${this.data.puid}&mount_id=${mount_id}`,
-    });
+    if (mount_id === this.data.mount_id) return
+    this.setData({
+      mount_id,
+      check: false
+    })
   },
   changeStatus(type) {
     const {
       query
     } = tt.getStorageSync('pageInfo');
     api.userStatus({
-      project_id: query?.project_id,
-      puid: query?.puid,
+      project_id: query?.project_id || 23,
+      puid: this.data.puid,
       mount_id: this.data.mount_id,
       type
     })

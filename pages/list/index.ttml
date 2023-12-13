@@ -3,7 +3,7 @@
     <view class="search">
         <image src="/image/icon-search.png" mode="widthFix"></image>
         <input placeholder="输入关键词或创作者" bindinput="searchInput"></input>
-        <view class="search-button">搜索</view>
+        <view class="search-button" bindtap="onSearch">搜索</view>
     </view>
     <view class="list">
         <view class="list-item" tt:for="{{list}}" tt:key="index" bindtap="jumpto" data-item="{{item}}">
@@ -16,8 +16,9 @@
             </view>
             <view class="list-img">
                 <image tt:for="{{item.list}}" tt:for-item="innerItem" tt:for-index="innerKey" tt:if="{{ innerKey < 4 }}"
-                    src="{{innerItem.img_url}}"></image>
+                    src="{{innerItem.img_url}}" mode="aspectFill"></image>
             </view>
         </view>
+        <view class="tips" tt:if="{{finished}}">已经没有更多了</view>
     </view>
 </view>
