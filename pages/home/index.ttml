@@ -1,32 +1,81 @@
 <view class="layout">
-    <view tt:if="{{miniappInfo.banner}}">
-        <swiper bindchange="swiperChange" class="swiper" circular="true">
-            <block tt:for="{{miniappInfo.banner}}" tt:key="index">
-                <swiper-item>
-                    <view class="swiper-item">
-                        <image class="img" bindtap="previewImage" data-index="{{index}}"
-                            data-list="{{miniappInfo.banner}}" src="{{item.url}}" mode="widthFix" />
-                    </view>
-                </swiper-item>
-            </block>
-        </swiper>
-        <view class="swiper-block">
-            <text tt:for="{{miniappInfo.banner}}" tt:key="index"
-                class="active {{current === index ? 'selected':''}}"></text>
+    <swiper class="swiper" circular="true" indicator-dots="true" indicator-active-color="#fff">
+        <block tt:for="{{images}}" tt:key="index">
+            <swiper-item>
+                <view class="swiper-item">
+                    <image class="img" src="{{item}}" mode="aspectFill" />
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="block">
+        <image class="head" src="/image/icon-bg.png" mode="widthFix"></image>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-company.png" mode="widthFix"></image>
+            </view>
+            公司名称：
+            <text>{{ companyInfo.companyName }}</text>
+        </view>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-name.png" mode="widthFix"></image>
+            </view>
+            联系人：
+            <text>{{ miniappInfo.contactName }}</text>
+            <image class="online" src="/image/icon-zx.png" mode="widthFix"></image>
+        </view>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-zw.png" mode="widthFix"></image>
+            </view>
+            职位：
+            <text>{{miniappInfo.contactPosition}}</text>
+        </view>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-like.png" mode="widthFix"></image>
+            </view>
+            客户点赞数：
+            <text>{{like.num}}</text>
+        </view>
+        <view class="good" bindtap="linkButton">
+            <image src="{{like.check ? '/image/icon-goods.png':'/image/icon-good.png'}}" mode="widthFix"></image>
+            {{ like.check ? '已点赞':'赞一下'}}
         </view>
     </view>
-    <view class="image-block">
-        <image class="image" tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url}}"
-            bindtap="previewImage" data-index="{{index}}" data-list="{{miniappInfo.companyPhoto}}" mode="widthFix">
-        </image>
+    <view class="content">
+        <view class="tab">
+            <view tt:for="{{tabList}}" tt:key="index" class="{{ tab === item.value ? 'tab-block-yes':'tab-block' }}"
+                bindtap="changeTab" data-index="{{item.value}}">
+                {{item.name}}
+            </view>
+        </view>
+        <view class="tab-title">
+            <text></text>
+            <image src="/image/icon-yw.png" mode="widthFix"></image>
+            业务
+            <text></text>
+        </view>
+        <view class="business">
+            <text>{{miniappInfo.introduce}}</text>
+        </view>
+        <view class="tab-title">
+            <text></text>
+            <image src="/image/icon-xc.png" mode="widthFix"></image>
+            相册
+            <text></text>
+        </view>
+        <view class="photo">
+            <image tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url}}" bindtap="previewImage"
+                data-index="{{index}}" data-list="{{miniappInfo.companyPhoto}}" mode="widthFix">
+            </image>
+        </view>
     </view>
-    <view class="button" bindtap="sendSms">
-        <image class="info" src="/image/icon-info.png" mode="widthFix"></image>
-        建立联系
-        <image class="head" src="/image/icon-head.png" mode="widthFix"></image>
+    <view class="from">
+        <input placeholder="请输入手机号" maxlength="11" bindinput="phoneInput"></input>
+        <view class="from-button" bindtap="sumbit">
+            提交
+        </view>
     </view>
 </view>
-
-<popup-layer show="{{show}}" bind:close="close" bind:button="sendSms" />
-
-<follow-popup show="{{follow}}" bind:close="closeFollow" bind:button="followAwemeUser" />

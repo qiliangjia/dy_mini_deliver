@@ -3,19 +3,14 @@
     flex-direction: column;
     align-items: center;
     min-height: 100vh;
-    background-color: #F6F7FB;
-}
-
-.bg {
-    width: 100%;
-    margin-top: -200rpx;
+    background-color: #F1F3F4;
 }
 
 .block {
     width: 650rpx;
     padding: 20rpx 10rpx 20rpx 30rpx;
     background-color: #fff;
-    margin-top: -200rpx;
+    /* margin-top: -200rpx; */
     border-radius: 20rpx;
     position: relative;
     box-shadow: 0rpx 0rpx 20rpx rgba(106, 119, 163, 0.17);
@@ -83,10 +78,10 @@
     align-items: center;
 }
 
-.image{
+.image {
     width: 690rpx;
-     border-radius: 20rpx;
-     margin-bottom: 20rpx;
+    border-radius: 20rpx;
+    margin-bottom: 20rpx;
 }
 
 .button {
@@ -117,9 +112,10 @@
 
 @keyframes autoZoom {
     0% {
-      transform: scale(0.8);
+        transform: scale(0.8);
     }
+
     100% {
-      transform: scale(1);
+        transform: scale(1);
     }
-  }
+}

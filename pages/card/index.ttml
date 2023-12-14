@@ -1,5 +1,4 @@
 <view class="layout">
-    <image class="bg" src="/image/bg.png" mode="widthFix"></image>
     <view class="block">
         <image class="head" src="/image/icon-bg.png" mode="widthFix"></image>
         <view class="comany">{{companyInfo.companyName}}</view>

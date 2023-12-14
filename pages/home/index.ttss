@@ -1,87 +1,190 @@
 .layout {
-    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     min-height: 100vh;
+    background-color: #F1F3F4;
 }
 
 .swiper {
-    min-height: 500rpx;
+    width: 100%;
+    min-height: 420rpx;
+    position: relative;
 }
 
 .swiper-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 500rpx;
+    width: 100%;
+    min-height: 420rpx;
 }
 
 .img {
-    width: 690rpx;
+    width: 100%;
     height: 420rpx;
+}
+
+.block {
+    width: 710rpx;
+    padding: 30rpx;
+    background-color: #fff;
+    margin: 30rpx 0;
     border-radius: 20rpx;
-}
-
-
-.swiper-block {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 30rpx;
-}
-
-.active {
-    width: 40rpx;
-    height: 8rpx;
-    background-color: #D8D8D8;
-    border-radius: 4rpx;
-    margin: 0rpx 10rpx;
-}
-
-.selected {
-    background-color: #328AFF;
-}
-
-.image {
-    width: 100%;
-    display: block;
-}
-
-.image-block {
-    margin-top: 50rpx;
-    padding-bottom: 150rpx;
-}
-
-.button {
-    width: 100%;
-    position: fixed;
-    bottom: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 40rpx;
-    background: linear-gradient(to right, #FF643C, #FF192E);
-    padding: 50rpx 0rpx;
-    color: #fff;
-}
-
-.info {
-    width: 46rpx;
-    margin: 0rpx 20rpx;
+    position: relative;
+    box-shadow: 0rpx 0rpx 20rpx rgba(106, 119, 163, 0.17);
 }
 
 .head {
-    width: 89rpx;
+    width: 159rpx;
     position: absolute;
-    right: 120rpx;
-    bottom: 8rpx;
-    animation: autoZoom 1s infinite alternate;
+    right: 20rpx;
+    top: 15rpx;
 }
 
-@keyframes autoZoom {
-    0% {
-        transform: scale(0.8);
-    }
+.detail {
+    display: flex;
+    color: #888888;
+    font-size: 28rpx;
+    margin: 10rpx 0rpx;
+}
 
-    100% {
-        transform: scale(1);
-    }
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon image {
+    width: 34rpx;
+    margin-right: 10rpx;
+}
+
+.detail text {
+    color: #000;
+}
+
+.online {
+    width: 101rpx;
+    margin-left: 10rpx;
+}
+
+.good {
+    position: absolute;
+    right: 30rpx;
+    bottom: 30rpx;
+    width: 193rpx;
+    height: 66rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    color: #E41000;
+    border: 2rpx solid #E40F00;
+    border-radius: 33rpx;
+}
+
+.good image {
+    width: 33rpx;
+    margin-right: 10rpx;
+}
+
+.content {
+    background: #fff url('image/bg1.png') no-repeat;
+    background-size: 100%;
+    width: 100%;
+    min-height: 300rpx;
+    border-radius: 20rpx 20rpx 0 0;
+    padding: 30rpx 0 180rpx 0;
+}
+
+.tab {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.tab-block {
+    font-size: 36rpx;
+    padding-bottom: 5rpx;
+    border-bottom: 6rpx solid transparent;
+    margin-bottom: 20rpx;
+}
+
+.tab-block-yes {
+    font-size: 36rpx;
+    color: #328AFF;
+    border-bottom: 6rpx solid #328AFF;
+    padding-bottom: 5rpx;
+    margin-bottom: 20rpx;
+}
+
+
+.tab-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32rpx;
+    margin: 30rpx 0;
+}
+
+.tab-title image {
+    width: 35rpx;
+    margin-right: 10rpx;
+}
+
+.tab-title text {
+    width: 250rpx;
+    height: 1rpx;
+    background: #B7CFF0;
+    margin: 0rpx 10rpx;
+}
+
+.business {
+    display: flex;
+    justify-content: center;
+}
+
+.business text {
+    width: 650rpx;
+    font-size: 32rpx;
+    color: #333333;
+}
+
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo image {
+    border-radius: 20rpx;
+    margin-bottom: 20rpx;
+}
+
+.from {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 30rpx 0 50rpx 0;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.from input {
+    width: 435rpx;
+    height: 80rpx;
+    background-color: #fff;
+    border-radius: 10rpx;
+    padding: 0 20rpx;
+    font-size: 28rpx;
+}
+
+.from-button {
+    width: 195rpx;
+    height: 80rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 32rpx;
+    background: linear-gradient(to right, #FF643C, #FF192E);
+    color: #fff;
+    border-radius: 55rpx;
 }
