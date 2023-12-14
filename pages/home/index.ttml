@@ -1,5 +1,5 @@
 <view class="layout">
-    <swiper class="swiper" circular="true" indicator-dots="true" indicator-active-color="#fff">
+    <swiper class="swiper" bindchange="swiperChange" circular="true">
         <block tt:for="{{images}}" tt:key="index">
             <swiper-item>
                 <view class="swiper-item">
@@ -8,15 +8,32 @@
             </swiper-item>
         </block>
     </swiper>
+    <view class="swiper-block">
+        <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
+    </view>
+    <view class="swiper_view">
+        <swiper class="swiper_container" vertical="false" autoplay="true" circular="true" interval="2000">
+            <block wx:for="{{textArr}}" wx:key="index">
+                <swiper-item>
+                    <view class="swiper_item">
+                        <view class="item_head">
+                            <image src="{{item.avatar}}" mode="aspectFill" />
+                        </view>
+                        <view class="item">{{item.name}} 刚刚访问并建立联系</view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
     <view class="block">
         <image class="head" src="/image/icon-bg.png" mode="widthFix"></image>
-        <view class="detail">
+        <!-- <view class="detail">
             <view class="icon">
                 <image src="/image/icon-company.png" mode="widthFix"></image>
             </view>
             公司名称：
             <text>{{ companyInfo.companyName }}</text>
-        </view>
+        </view> -->
         <view class="detail">
             <view class="icon">
                 <image src="/image/icon-name.png" mode="widthFix"></image>

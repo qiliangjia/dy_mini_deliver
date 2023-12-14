@@ -4,12 +4,36 @@
     align-items: center;
     min-height: 100vh;
     background-color: #F1F3F4;
+    position: relative;
 }
 
 .swiper {
     width: 100%;
     min-height: 420rpx;
     position: relative;
+}
+
+.swiper-block {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20rpx;
+    position: absolute;
+    top: 380rpx;
+}
+
+.active {
+    width: 14rpx;
+    height: 12rpx;
+    background-color: rgba(0, 0, 0, 0.40);
+    border-radius: 12rpx;
+    margin: 0rpx 8rpx;
+    border: 1rpx solid #FFFFFF;
+}
+
+.selected {
+    width: 40rpx;
+    background-color: #FFFFFF;
 }
 
 .swiper-item {
@@ -62,6 +86,7 @@
 
 .online {
     width: 101rpx;
+    height: 41rpx;
     margin-left: 10rpx;
 }
 
@@ -82,6 +107,7 @@
 
 .good image {
     width: 33rpx;
+    min-height: 39rpx;
     margin-right: 10rpx;
 }
 
@@ -153,6 +179,7 @@
 }
 
 .photo image {
+    width: 650rpx;
     border-radius: 20rpx;
     margin-bottom: 20rpx;
 }
@@ -187,4 +214,43 @@
     background: linear-gradient(to right, #FF643C, #FF192E);
     color: #fff;
     border-radius: 55rpx;
+}
+
+
+.swiper_view {
+    position: absolute;
+    top: 30rpx;
+    left: 30rpx;
+    width: fit-content;
+    z-index: 999;
+    height: 70rpx;
+    background: rgba(0, 0, 0, 0.4);
+    border-radius: 100rpx;
+    padding-top: 10rpx;
+    overflow: hidden;
+}
+
+.swiper_container {
+    height: 70rpx;
+    min-width: 400rpx;
+}
+
+.swiper_item {
+    font-size: 28rpx;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.item_head {
+    display: flex;
+    align-items: center;
+}
+
+.item_head image {
+    width: 48rpx;
+    height: 48rpx;
+    margin-right: 10rpx;
+    border-radius: 100rpx;
 }

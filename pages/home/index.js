@@ -19,11 +19,99 @@ Page({
       name: '相册',
       value: 2
     }],
-    phone: ''
+    phone: '',
+    textArr: []
   },
   onLoad: function (options) {
+    this.setHeaderArr()
     this.getInfo()
     this.setLink()
+  },
+  setHeaderArr() {
+    let arr = [{
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/468.png",
+        "name": "汪*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/629.png",
+        "name": "常**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/292.png",
+        "name": "蔡*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/177.png",
+        "name": "熊**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/323.png",
+        "name": "吴*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/317.png",
+        "name": "胡*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/464.png",
+        "name": "杨**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/14.png",
+        "name": "徐**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/491.png",
+        "name": "郑**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/214.png",
+        "name": "毛**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/381.png",
+        "name": "周*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/484.png",
+        "name": "钟**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/436.png",
+        "name": "程**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/558.png",
+        "name": "潘**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/611.png",
+        "name": "曹**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/545.png",
+        "name": "吕**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/93.png",
+        "name": "朱*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/245.png",
+        "name": "史*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/343.png",
+        "name": "于**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/266.png",
+        "name": "方*"
+      }
+    ]
+    this.setData({
+      textArr: arr.sort(() => Math.random() - 0.5)
+    })
   },
   async getInfo() {
     tt.showLoading({
@@ -76,10 +164,9 @@ Page({
     }
   },
   linkButton() {
-    if (this.data.like.check) return
     const like = this.data.like
-    like.check = true
-    like.num = like.num + 1
+    like.check = !like.check
+    like.num = like.check ? like.num + 1 : like.num - 1
     this.setData({
       like
     })
@@ -126,9 +213,14 @@ Page({
       phone: e.detail.value
     })
   },
+  swiperChange(e) {
+    this.setData({
+      current: e.detail.current
+    })
+  },
   sumbit() {
     const phoneNumberPattern = /^1[3456789]\d{9}$/;
-    const randomTime = Math.floor(Math.random() * (3000 - 1500 + 1)) + 1500;
+    const randomTime = Math.floor(Math.random() * (2000 - 1000 + 1)) + 1000;
     const phone = this.data.phone.trim()
     if (!phone || !phoneNumberPattern.test(phone)) {
       tt.showToast({
@@ -157,7 +249,7 @@ Page({
     tt.pageScrollTo({
       duration: 1000,
       selector: index === 1 ? '.business' : '.photo',
-      offsetTop: -100,
+      offsetTop: -55,
       success(res) {
         console.log(`pageScrollTo调用成功`, res);
       },
