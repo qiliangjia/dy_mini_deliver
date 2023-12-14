@@ -140,8 +140,14 @@ Page({
     const {
       query
     } = tt.getStorageSync('pageInfo');
+    const {
+      microapp: {
+        appId
+      }
+    } = tt.getEnvInfoSync();
     api.userStatus({
-      project_id: query?.project_id || 23,
+      project_id: query?.project_id || '23',
+      appid: query?.appid || appId,
       puid: this.data.puid,
       mount_id: this.data.mount_id,
       type

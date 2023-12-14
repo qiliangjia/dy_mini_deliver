@@ -54,7 +54,7 @@ Page({
       }
     } = tt.getEnvInfoSync();
     api.getUserList({
-      appid: query?.appid || appId,
+      appid: query?.appid || 'ttc5d0b36d5ae067cb01',
       project_id: query?.project_id || '23',
       page: this.data.page,
       limit: this.data.limit,
