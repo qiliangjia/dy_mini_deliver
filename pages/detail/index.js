@@ -59,7 +59,7 @@ Page({
   setAd() {
     this.ad = tt.createRewardedVideoAd({
       // adUnitId: this.data.ad_placement_id,
-      adUnitId: 'f04kksnbn2vf9w76ov',
+      adUnitId: 'qz802ehmhdbhci2tbi',
     });
     this.ad.onClose((data) => {
       tt.hideLoading();
