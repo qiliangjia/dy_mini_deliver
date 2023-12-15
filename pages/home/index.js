@@ -1,4 +1,6 @@
 const api = require("../../utils/request").Api;
+const api_els = require("../../utils/request-els").Api;
+
 Page({
   data: {
     images: [
@@ -20,12 +22,40 @@ Page({
       value: 2
     }],
     phone: '',
-    textArr: []
+    textArr: [],
+    miniappInfo: {}
   },
   onLoad: function (options) {
+    this.getContent()
     this.setHeaderArr()
-    this.getInfo()
     this.setLink()
+  },
+  getContent() {
+    tt.showLoading({
+      title: '加载中...',
+    });
+    const {
+      microapp: {
+        appId
+      }
+    } = tt.getEnvInfoSync();
+    api_els.getContent(appId).then(({
+      data
+    }) => {
+      if (data.code === 0) {
+        const item = data.data
+        let miniappInfo = {
+          contactName: item.info?.result?.miniInfo?.contactName || '王伟斌',
+          contactPosition: item.info?.result?.miniInfo?.contactPosition || '经理',
+          introduce: item.is_publish === 1 ? item.info.result.miniInfo.introduce : item.content,
+          companyPhoto: item.is_publish === 1 ? item.info.result.miniInfo.companyPhoto : item.album
+        }
+        this.setData({
+          miniappInfo
+        })
+        tt.hideToast();
+      }
+    })
   },
   setHeaderArr() {
     let arr = [{
@@ -257,5 +287,25 @@ Page({
         console.log(`pageScrollTo调用失败`, err);
       },
     })
+  },
+  previewImage(e) {
+    const {
+      index,
+      list
+    } = e.currentTarget.dataset;
+    let array = []
+    list.forEach((e) => {
+      array.push(e.url || e)
+    })
+    tt.previewImage({
+      current: array[index],
+      urls: array,
+      success: () => {
+        console.log("previewImage success");
+      },
+      fail: (e) => {
+        console.log(e);
+      }
+    });
   },
 })

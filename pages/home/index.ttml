@@ -1,15 +1,15 @@
 <view class="layout">
     <swiper class="swiper" bindchange="swiperChange" circular="true">
-        <block tt:for="{{images}}" tt:key="index">
+        <block tt:for="{{miniappInfo.companyPhoto}}" tt:key="index">
             <swiper-item>
                 <view class="swiper-item">
-                    <image class="img" src="{{item}}" mode="aspectFill" />
+                    <image class="img" src="{{item.url || item}}" mode="aspectFill" />
                 </view>
             </swiper-item>
         </block>
     </swiper>
     <view class="swiper-block">
-        <text tt:for="{{images}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
+        <text tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
     <view class="swiper_view">
         <swiper class="swiper_container" vertical="false" autoplay="true" circular="true" interval="2000">
@@ -84,7 +84,7 @@
             <text></text>
         </view>
         <view class="photo">
-            <image tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url}}" bindtap="previewImage"
+            <image tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url || item}}" bindtap="previewImage"
                 data-index="{{index}}" data-list="{{miniappInfo.companyPhoto}}" mode="widthFix">
             </image>
         </view>
