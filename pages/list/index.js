@@ -54,7 +54,7 @@ Page({
       }
     } = tt.getEnvInfoSync();
     api.getUserList({
-      appid: query?.appid || 'ttc5d0b36d5ae067cb01',
+      appid: appId,
       project_id: query?.project_id || '23',
       page: this.data.page,
       limit: this.data.limit,
@@ -91,11 +91,11 @@ Page({
   jumpto(e) {
     const {
       puid,
-      ad_placement_id
+      list
     } = e.currentTarget.dataset.item
     try {
       tt.navigateTo({
-        url: `/pages/detail/index?puid=${puid}&ad_placement_id=${ad_placement_id}`,
+        url: `/pages/detail/index?puid=${puid}&ad_placement_id=${list[0].ad_placement_id}`,
       });
     } catch (error) {
       console.log(error);

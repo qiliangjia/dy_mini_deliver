@@ -2,14 +2,14 @@
     <view class="header">
         <image class="header-img" tt:for="{{list}}" tt:key="index" tt:if="{{item.mount_id === mount_id}}"
             src="{{item.img_url}}" mode="aspectFill"></image>
-        <view class="lock" tt:if="{{!check}}" bindtap="jumptoButton">
+        <view class="lock" tt:if="{{!check}}" bindtap="openPopup">
             <view class="lock-icon">
                 <image src="/image/icon-suo.png" mode="widthFix"></image>
             </view>
         </view>
     </view>
     <view class="content">
-        <image bindtap="jumptoButton" class="button" src="/image/download.png" mode="widthFix"></image>
+        <image bindtap="openPopup" class="button" src="/image/download.png" mode="widthFix"></image>
     </view>
     <view class="detail">
         <view class="img" tt:for="{{list}}" tt:key="index" bindtap="chiosImg" data-item="{{item}}">
@@ -20,3 +20,5 @@
         </view>
     </view>
 </view>
+
+<download-layer show="{{show}}" bind:button="downloadButton" bind:close="close" />

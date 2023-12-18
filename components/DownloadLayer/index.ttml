@@ -1,0 +1,10 @@
+<view class="drawer_screen" wx:if="{{show}}" bind:tap="onClose"></view>
+<view class="wrapper" wx:if="{{show}}">
+    <view class="black">
+        <view class="black-bg">
+            <view class="title">原图下载</view>
+            <view class="tips">看完广告可获取原图</view>
+            <image src="/image/button-gg.png" class="button" bindtap="jumpto" mode="widthFix"></image>
+        </view>
+    </view>
+</view>

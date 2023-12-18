@@ -7,6 +7,7 @@ Page({
     puid: '',
     list: [],
     ad_placement_id: '',
+    show: false,
     check: false,
     mount_id: 0
   },
@@ -58,8 +59,7 @@ Page({
   },
   setAd() {
     this.ad = tt.createRewardedVideoAd({
-      // adUnitId: this.data.ad_placement_id,
-      adUnitId: 'qz802ehmhdbhci2tbi',
+      adUnitId: this.data.ad_placement_id,
     });
     this.ad.onClose((data) => {
       tt.hideLoading();
@@ -90,6 +90,7 @@ Page({
           filePath,
           success: (res) => {
             this.changeStatus(2)
+            this.close()
             tt.showToast({
               title: "成功保存到本地相册"
             });
@@ -115,7 +116,7 @@ Page({
       },
     });
   },
-  jumptoButton() {
+  downloadButton() {
     if (this.data.check) {
       this.saveImageToPhotosAlbum()
       return
@@ -124,7 +125,21 @@ Page({
       title: '视频加载中',
 
     });
-    this.ad.show();
+    this.ad.show()
+  },
+  close() {
+    this.setData({
+      show: false
+    })
+  },
+  openPopup() {
+    if (this.data.check) {
+      this.saveImageToPhotosAlbum()
+      return
+    }
+    this.setData({
+      show: true
+    })
   },
   chiosImg(e) {
     const {

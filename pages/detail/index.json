@@ -1,3 +1,5 @@
 {
-    "usingComponents": {}
+    "usingComponents": {
+        "download-layer": "/components/DownloadLayer/index"
+    }
 }
