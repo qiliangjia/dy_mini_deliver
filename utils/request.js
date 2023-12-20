@@ -1,6 +1,6 @@
 const GET = "GET";
 const POST = "POST";
-const REQUEST_ENV = 'stg'
+const REQUEST_ENV = 'prod'
 const baseUrl = `https://fhl-business-${REQUEST_ENV}.qiliangjia.com`;
 
 function request(method, url, data = {}, isBase = false) {
