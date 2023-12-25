@@ -1,9 +1,0 @@
-<view class="layout">
-    <view class="text" style="padding-top:300rpx;">欢迎来到</view>
-    <view class="text">小汽水的私人相册</view>
-    <image class="head" src="https://static.qiliangjia.com/static/dy-mini/meitu/home.jpg" mode="aspectFill"></image>
-    <view class="button" bindtap="jumptoButton">
-        <image src="/image/icon.png" mode="widthFix"></image>
-        查看广告，解锁相册
-    </view>
-</view>

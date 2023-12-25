@@ -2,13 +2,13 @@
     <image class="banner" src="https://static.qiliangjia.com/static/dy-mini/mount/banner.png"></image>
     <view class="search">
         <image src="/image/icon-search.png" mode="widthFix"></image>
-        <input placeholder="输入关键词或创作者" bindinput="searchInput"></input>
-        <view class="search-button" bindtap="onSearch">搜索</view>
+        <input placeholder="输入挂载密钥" bindinput="searchInput"></input>
+        <view class="search-button" bindtap="onSearch">生成</view>
     </view>
     <view class="list">
         <view class="list-item" tt:for="{{list}}" tt:key="index" bindtap="jumpto" data-item="{{item}}">
             <view class="list-row">
-                <view class="list-title">{{item.dy_no}}</view>
+                <view class="list-title">{{item.dy_no || '超多可挂载表情包'}}</view>
                 <view class="list-icon">
                     更多
                     <image src="/image/icon-back.png" mode="widthFix"></image>

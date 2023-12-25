@@ -32,30 +32,23 @@ Page({
     tt.showLoading({
       title: '加载中...',
     });
-    const {
-      query
-    } = tt.getStorageSync('pageInfo');
     api.getDetail({
-      puid: this.data.puid,
-      project_id: query?.project_id || '23'
-    }).then(({
-      data
-    }) => {
-      if (data.code === 0) {
+        puid: this.data.puid,
+      }).then((res) => {
         this.setData({
-          list: data.data.list
+          list: res.data.list
         })
         if (this.data.mount_id < 1) {
           this.setData({
-            mount_id: data.data.list[0].mount_id
+            mount_id: res.data.list[0].mount_id
           })
         }
-      }
-    }).finally(() => {
-      this.setAd()
-      this.changeStatus(1)
-      tt.hideToast();
-    })
+      })
+      .finally(() => {
+        this.setAd()
+        this.changeStatus(1)
+        tt.hideLoading();
+      })
   },
   setAd() {
     this.ad = tt.createRewardedVideoAd({
@@ -123,9 +116,13 @@ Page({
     }
     tt.showLoading({
       title: '视频加载中',
-
     });
-    this.ad.show()
+    this.ad.show().catch((e) => {
+      tt.showToast({
+        title: '广告位ID错误',
+        icon: 'fail'
+      });
+    })
   },
   close() {
     this.setData({
@@ -150,19 +147,10 @@ Page({
       mount_id,
       check: false
     })
+    this.changeStatus(1)
   },
   changeStatus(type) {
-    const {
-      query
-    } = tt.getStorageSync('pageInfo');
-    const {
-      microapp: {
-        appId
-      }
-    } = tt.getEnvInfoSync();
     api.userStatus({
-      project_id: query?.project_id || '23',
-      appid: query?.appid || appId,
       puid: this.data.puid,
       mount_id: this.data.mount_id,
       type

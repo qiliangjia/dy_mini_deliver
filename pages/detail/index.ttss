@@ -47,6 +47,7 @@
 
 .lock image {
     width: 45rpx;
+    height: 45rpx;
 }
 
 .button {

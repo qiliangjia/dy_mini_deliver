@@ -16,8 +16,8 @@
                 {
                     "id": 1702375208060,
                     "name": "pages/detail/index",
-                    "pathName": "pages/list/index",
-                    "query": "appid=ttc5d0b36d5ae067cb01&puid=2007829340200002&ad_placement_id=mfcmq67yb9y2rbw1iv&mount_id=11&project_id=23",
+                    "pathName": "pages/detail/index",
+                    "query": "mount_id=22&puid=202331218486001869&ad_placement_id=f04kksnbn2vf9w76ov&dy_no=doudou4907245",
                     "scene": "011001",
                     "launchFrom": "search_used_list",
                     "location": "",

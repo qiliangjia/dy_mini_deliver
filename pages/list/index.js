@@ -6,7 +6,7 @@ Page({
   data: {
     page: 1,
     limit: 20,
-    dy_no: '',
+    rd_str: '',
     list: [],
     finished: false
   },
@@ -29,71 +29,78 @@ Page({
   },
   searchInput(e) {
     this.setData({
-      dy_no: e.detail.value
+      rd_str: e.detail.value
     })
   },
   onSearch() {
-    this.setData({
-      finished: false,
-      list: [],
-      page: 1
+    if (!this.data.rd_str.trim()) {
+      tt.showToast({
+        title: '密钥不能为空',
+        icon: 'fail'
+      });
+      return
+    }
+    tt.showLoading({
+      title: '加载中...',
+    });
+    api.getUserList({
+      page: this.data.page,
+      limit: this.data.limit,
+      rd_str: this.data.rd_str
+    }).then((res) => {
+      const item = res.data
+      delete item.img_url;
+      tt.navigateTo({
+        url: `/pages/detail/index?${obj2Param(item)}`,
+      });
+    }).catch(() => {
+      tt.showToast({
+        title: '密钥无效',
+        icon: 'fail'
+      });
+    }).finally(() => {
+      tt.hideLoading();
     })
-    this.getList()
   },
   getList() {
     if (this.data.finished) return
     tt.showLoading({
       title: '加载中...',
     });
-    const {
-      query,
-    } = tt.getStorageSync('pageInfo');
-    const {
-      microapp: {
-        appId
-      }
-    } = tt.getEnvInfoSync();
     api.getUserList({
-      appid: appId,
-      project_id: query?.project_id || '23',
       page: this.data.page,
       limit: this.data.limit,
-      dy_no: this.data.dy_no
-    }).then(({
-      data
-    }) => {
-      if (data.code === 0) {
-        const item = data.data.list
-        if (item.length === 0) {
-          this.setData({
-            finished: true
-          })
-          tt.showToast({
-            title: '没有更多了',
-          });
-        } else {
-          this.setData({
-            list: this.data.list.concat(item)
-          })
-          tt.hideToast();
-        }
-      } else {
+    }).then((res) => {
+      const item = res.data.list
+      if (item.length === 0) {
         this.setData({
           finished: true
         })
         tt.showToast({
-          title: '暂无数据',
-          icon: 'fail'
+          title: '没有更多了',
         });
+      } else {
+        this.setData({
+          list: this.data.list.concat(item)
+        })
+        tt.hideLoading();
       }
+    }).catch(() => {
+      this.setData({
+        finished: true
+      })
+      tt.showToast({
+        title: '暂无数据',
+        icon: 'fail'
+      });
     })
   },
   jumpto(e) {
-    const {
-      puid,
-      list
-    } = e.currentTarget.dataset.item
     try {
+      const {
+        puid,
+        list
+      } = e.currentTarget.dataset.item
       tt.navigateTo({
         url: `/pages/detail/index?puid=${puid}&ad_placement_id=${list[0].ad_placement_id}`,
       });
