@@ -21,6 +21,9 @@ Page({
     this.changePage(options)
     this.getInfo()
   },
+  onUnload() {
+    this.ad.destroy()
+  },
   changePage(options) {
     const route = getCurrentPages()
     if (route.length < 2 || route[route.length - 2].route !== 'pages/list/index') {
