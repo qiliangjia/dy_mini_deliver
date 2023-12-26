@@ -19,7 +19,6 @@ Page({
       ad_placement_id: options?.ad_placement_id || ''
     })
     this.changePage(options)
-    this.getInfo()
   },
   onUnload() {
     this.ad.destroy()
@@ -30,6 +29,8 @@ Page({
       tt.reLaunch({
         url: `/pages/list/index?${obj2Param(options)}`,
       });
+    } else {
+      this.getInfo()
     }
   },
   getInfo() {
