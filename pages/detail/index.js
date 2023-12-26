@@ -9,7 +9,8 @@ Page({
     ad_placement_id: '',
     show: false,
     check: false,
-    mount_id: 0
+    mount_id: 0,
+    ad_status: true,
   },
   onLoad: function (options) {
     this.setData({
@@ -68,6 +69,18 @@ Page({
         });
       }
     });
+    this.ad.onLoad((e) => {
+      this.setData({
+        ad_status: true
+      })
+      console.log('广告加载成功', e);
+    })
+    this.ad.onError((e) => {
+      this.setData({
+        ad_status: false
+      })
+      console.log('广告加载失败', e);
+    })
     this.ad.load();
   },
   saveImageToPhotosAlbum() {
@@ -118,9 +131,8 @@ Page({
       title: '视频加载中',
     });
     this.ad.show().catch((e) => {
-      tt.showToast({
-        title: '广告位ID错误',
-        icon: 'fail'
+      this.ad.load().then(() => {
+        this.ad.show();
       });
     })
   },
@@ -132,6 +144,12 @@ Page({
   openPopup() {
     if (this.data.check) {
       this.saveImageToPhotosAlbum()
+      return
+    }
+    if (!this.data.ad_status) {
+      this.setData({
+        check: true
+      })
       return
     }
     this.setData({
