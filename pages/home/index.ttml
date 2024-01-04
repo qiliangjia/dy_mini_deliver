@@ -1,6 +1,6 @@
 <view class="layout">
     <swiper class="swiper" bindchange="swiperChange" circular="true">
-        <block tt:for="{{miniappInfo.companyPhoto}}" tt:key="index">
+        <block tt:for="{{miniappInfo.banner}}" tt:key="index">
             <swiper-item>
                 <view class="swiper-item">
                     <image class="img" src="{{item.url || item}}" mode="aspectFill" />
@@ -9,7 +9,7 @@
         </block>
     </swiper>
     <view class="swiper-block">
-        <text tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
+        <text tt:for="{{miniappInfo.banner}}" tt:key="index" class="active {{current === index ? 'selected':''}}"></text>
     </view>
     <view class="swiper_view">
         <swiper class="swiper_container" vertical="false" autoplay="true" circular="true" interval="2000">

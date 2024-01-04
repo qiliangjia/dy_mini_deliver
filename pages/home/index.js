@@ -48,7 +48,9 @@ Page({
           contactName: item.info?.result?.miniInfo?.contactName || '王伟斌',
           contactPosition: item.info?.result?.miniInfo?.contactPosition || '经理',
           introduce: item.is_publish === 1 ? item.info.result.miniInfo.introduce : item.content,
-          companyPhoto: item.is_publish === 1 ? item.info.result.miniInfo.companyPhoto : item.album
+          companyPhoto: item.is_publish === 1 ? item.info.result.miniInfo.companyPhoto : item.album,
+          banner:  item.info?.result?.miniInfo?.banner || item.album,
+          puid: item.info?.puid || ''
         }
         this.setData({
           miniappInfo
@@ -217,6 +219,17 @@ Page({
         url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg'
       }, {
         url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
+      }],
+      banner: [{
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/1.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/3.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg'
+      }, {
+        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
       }]
     }
     const miniappInfo = this.data.miniappInfo
@@ -262,12 +275,39 @@ Page({
     tt.showLoading({
       title: '提交中...',
     });
-    setTimeout(() => {
+    if (!this.data.miniappInfo.puid) {
+      setTimeout(() => {
+        tt.showToast({
+          title: '提交成功',
+          icon: 'success'
+        });
+      }, randomTime);
+      return
+    }
+    api.setMobile({
+      puid: this.data.miniappInfo.puid,
+      project_id: 16,
+      mobile: phone
+    }).then(({
+      data
+    }) => {
+      if (data.code === 0) {
+        tt.showToast({
+          title: '提交成功',
+          icon: 'success'
+        });
+      } else {
+        tt.showToast({
+          title: data.msg,
+          icon: "fail"
+        });
+      }
+    }).catch(() => {
       tt.showToast({
-        title: '提交成功',
-        icon: 'success'
+        title: '提交失败',
+        icon: "fail"
       });
-    }, randomTime);
+    })
   },
   changeTab(e) {
     const {

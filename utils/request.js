@@ -1,4 +1,3 @@
-
 const GET = "GET";
 const POST = "POST";
 const REQUEST_ENV = 'prod'
@@ -9,6 +8,14 @@ function request(method, url, data = {}, isBase = false) {
     let header = {
       "Content-Type": "application/json",
     };
+    const {
+      microapp: {
+        appId
+      }
+    } = tt.getEnvInfoSync();
+    if (!data.appid) {
+      data.appid = appId
+    }
     tt.request({
       url: isBase ? url : baseUrl + url,
       method: method,
@@ -25,6 +32,7 @@ function request(method, url, data = {}, isBase = false) {
 }
 const Api = {
   getInfo: (data) => request(GET, `/project16/company/info`, data),
+  setMobile: (data) => request(GET, `/user/company/mobile/add`, data),
 };
 module.exports = {
   Api,
