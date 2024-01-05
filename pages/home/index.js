@@ -43,18 +43,25 @@ Page({
       data
     }) => {
       if (data.code === 0) {
-        const item = data.data
+        const item = data.data;
+        const request = item?.info?.result || {};
+        const miniInfo = request?.miniInfo || {};
+
+        const isPublished = item.is_publish === 1;
+
         let miniappInfo = {
-          contactName: item.info?.result?.miniInfo?.contactName || '王伟斌',
-          contactPosition: item.info?.result?.miniInfo?.contactPosition || '经理',
-          introduce: item.is_publish === 1 ? item.info.result.miniInfo.introduce : item.content,
-          companyPhoto: item.is_publish === 1 ? item.info.result.miniInfo.companyPhoto : item.album,
-          banner:  item.info?.result?.miniInfo?.banner || item.album,
+          contactName: miniInfo?.contactName || '王伟斌',
+          contactPosition: miniInfo?.contactPosition || '经理',
+          introduce: isPublished ? miniInfo?.introduce : item.content,
+          companyPhoto: isPublished && miniInfo?.companyPhoto?.length > 0 ? miniInfo?.companyPhoto : item.album,
+          banner: isPublished && miniInfo?.banner?.length > 0 ? miniInfo?.banner : item.album,
           puid: item.info?.puid || ''
-        }
+        };
+
         this.setData({
           miniappInfo
-        })
+        });
+
         tt.hideToast();
       }
     })
