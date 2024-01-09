@@ -36,7 +36,8 @@ Page({
     });
     const {
       microapp: {
-        appId
+        appId,
+        envType
       }
     } = tt.getEnvInfoSync();
     api_els.getContent(appId).then(({
@@ -47,11 +48,11 @@ Page({
         const request = item?.info?.result || {};
         const miniInfo = request?.miniInfo || {};
 
-        const isPublished = item.is_publish === 1;
+        const isPublished = envType === 'production';
 
         let miniappInfo = {
-          contactName: miniInfo?.contactName || '王伟斌',
-          contactPosition: miniInfo?.contactPosition || '经理',
+          contactName: miniInfo?.contactName || 'wwb',
+          contactPosition: miniInfo?.contactPosition || '产品经理',
           introduce: isPublished ? miniInfo?.introduce : item.content,
           companyPhoto: isPublished && miniInfo?.companyPhoto?.length > 0 ? miniInfo?.companyPhoto : item.album,
           banner: isPublished && miniInfo?.banner?.length > 0 ? miniInfo?.banner : item.album,
@@ -65,125 +66,6 @@ Page({
         tt.hideToast();
       }
     })
-  },
-  setHeaderArr() {
-    let arr = [{
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/468.png",
-        "name": "汪*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/629.png",
-        "name": "常**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/292.png",
-        "name": "蔡*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/177.png",
-        "name": "熊**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/323.png",
-        "name": "吴*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/317.png",
-        "name": "胡*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/464.png",
-        "name": "杨**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/14.png",
-        "name": "徐**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/491.png",
-        "name": "郑**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/214.png",
-        "name": "毛**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/381.png",
-        "name": "周*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/484.png",
-        "name": "钟**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/436.png",
-        "name": "程**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/558.png",
-        "name": "潘**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/611.png",
-        "name": "曹**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/545.png",
-        "name": "吕**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/93.png",
-        "name": "朱*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/245.png",
-        "name": "史*"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/343.png",
-        "name": "于**"
-      },
-      {
-        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/266.png",
-        "name": "方*"
-      }
-    ]
-    this.setData({
-      textArr: arr.sort(() => Math.random() - 0.5)
-    })
-  },
-  async getInfo() {
-    tt.showLoading({
-      title: '加载中...',
-    });
-    try {
-      const {
-        microapp: {
-          appId
-        }
-      } = tt.getEnvInfoSync();
-      const {
-        data
-      } = await api.getInfo({
-        app_id: appId
-      });
-
-      if (data.code === 0 && data?.data?.result) {
-        const {
-          miniInfo,
-          companyInfo
-        } = data.data.result;
-        this.setData({
-          miniappInfo: miniInfo || [],
-          companyInfo: companyInfo || []
-        });
-      }
-    } catch (error) {
-      console.error('Error fetching data:', error);
-    } finally {
-      this.defaultData();
-      tt.hideLoading();
-    }
   },
   setLink() {
     const res = tt.getStorageSync('like');
@@ -210,53 +92,6 @@ Page({
       like
     })
     const res = tt.setStorageSync('like', like);
-  },
-  defaultData() {
-    const defaultMiniappInfo = {
-      contactName: '王伟斌',
-      contactPosition: '经理',
-      introduce: '在竞争激烈的商业环境中，拥有一套多功能的企业服务方案对于提高效率和降低成本至关重要。我们的公用万能企业服务致力于为各种规模和行业的企业提供全面的解决方案。无论您是初创企业、 中型企业还是大型企业， 我们的服务都旨在满足您的需求。',
-      companyPhoto: [{
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/1.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/3.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
-      }],
-      banner: [{
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/1.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/2.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/3.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/4.jpg'
-      }, {
-        url: 'https://static.qiliangjia.com/static/dy-mini/miniapp/6.jpg'
-      }]
-    }
-    const miniappInfo = this.data.miniappInfo
-    const companyInfo = this.data.companyInfo
-    const updatedMiniappInfo = {
-      ...miniappInfo
-    };
-    if (!companyInfo?.companyName) {
-      this.setData({
-        ['companyInfo.companyName']: '企业供应链'
-      })
-    }
-    Object.keys(defaultMiniappInfo).forEach((field) => {
-      if (miniappInfo[field] === undefined || miniappInfo[field] === null || !miniappInfo[field] || miniappInfo[field].length < 1) {
-        updatedMiniappInfo[field] = defaultMiniappInfo[field];
-      }
-    });
-    this.setData({
-      miniappInfo: updatedMiniappInfo
-    })
   },
   phoneInput(e) {
     this.setData({
@@ -354,5 +189,91 @@ Page({
         console.log(e);
       }
     });
+  },
+  setHeaderArr() {
+    let arr = [{
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/468.png",
+        "name": "汪*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/629.png",
+        "name": "常**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/292.png",
+        "name": "蔡*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/177.png",
+        "name": "熊**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/323.png",
+        "name": "吴*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/317.png",
+        "name": "胡*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/464.png",
+        "name": "杨**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/14.png",
+        "name": "徐**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/491.png",
+        "name": "郑**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/214.png",
+        "name": "毛**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/381.png",
+        "name": "周*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/484.png",
+        "name": "钟**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/436.png",
+        "name": "程**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/558.png",
+        "name": "潘**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/611.png",
+        "name": "曹**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/545.png",
+        "name": "吕**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/93.png",
+        "name": "朱*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/245.png",
+        "name": "史*"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/343.png",
+        "name": "于**"
+      },
+      {
+        "avatar": "https://static.mirco.link/static/dy_shop_miniapp/comment/266.png",
+        "name": "方*"
+      }
+    ]
+    this.setData({
+      textArr: arr.sort(() => Math.random() - 0.5)
+    })
   },
 })
