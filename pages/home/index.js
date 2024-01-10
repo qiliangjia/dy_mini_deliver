@@ -3,14 +3,6 @@ const api_els = require("../../utils/request-els").Api;
 
 Page({
   data: {
-    images: [
-      'https://static.qiliangjia.com/static/dy-mini/image/sw-3.png',
-      'https://static.qiliangjia.com/static/dy-mini/image/sw-1.png',
-      'https://static.qiliangjia.com/static/dy-mini/image/sw-2.png',
-      'https://static.qiliangjia.com/static/dy-mini/image/sw-4.png',
-      'https://static.qiliangjia.com/static/dy-mini/image/sw-5.png',
-      'https://static.qiliangjia.com/static/dy-mini/image/sw-6.png'
-    ],
     current: 0,
     tab: 1,
     like: {},
@@ -40,31 +32,27 @@ Page({
         envType
       }
     } = tt.getEnvInfoSync();
-    api_els.getContent(appId).then(({
-      data
-    }) => {
-      if (data.code === 0) {
-        const item = data.data;
-        const request = item?.info?.result || {};
-        const miniInfo = request?.miniInfo || {};
+    api_els.getContent(appId).then((res) => {
+      const item = res;
+      const request = item?.info?.result || {};
+      const miniInfo = request?.miniInfo || {};
 
-        const isPublished = envType === 'production';
+      const isPublished = envType === 'production';
 
-        let miniappInfo = {
-          contactName: miniInfo?.contactName || 'wwb',
-          contactPosition: miniInfo?.contactPosition || '产品经理',
-          introduce: isPublished ? miniInfo?.introduce : item.content,
-          companyPhoto: isPublished && miniInfo?.companyPhoto?.length > 0 ? miniInfo?.companyPhoto : item.album,
-          banner: isPublished && miniInfo?.banner?.length > 0 ? miniInfo?.banner : item.album,
-          puid: item.info?.puid || ''
-        };
+      let miniappInfo = {
+        contactName: miniInfo?.contactName || 'wwb',
+        contactPosition: miniInfo?.contactPosition || '产品经理',
+        introduce: isPublished ? miniInfo?.introduce : item.content,
+        companyPhoto: isPublished && miniInfo?.companyPhoto?.length > 0 ? miniInfo?.companyPhoto : item.album,
+        banner: isPublished && miniInfo?.banner?.length > 0 ? miniInfo?.banner : item.album,
+        puid: item.info?.puid || ''
+      };
 
-        this.setData({
-          miniappInfo
-        });
+      this.setData({
+        miniappInfo
+      });
 
-        tt.hideToast();
-      }
+      tt.hideToast();
     })
   },
   setLink() {
@@ -130,20 +118,11 @@ Page({
       puid: this.data.miniappInfo.puid,
       project_id: 16,
       mobile: phone
-    }).then(({
-      data
-    }) => {
-      if (data.code === 0) {
-        tt.showToast({
-          title: '提交成功',
-          icon: 'success'
-        });
-      } else {
-        tt.showToast({
-          title: data.msg,
-          icon: "fail"
-        });
-      }
+    }).then(() => {
+      tt.showToast({
+        title: '提交成功',
+        icon: 'success'
+      });
     }).catch(() => {
       tt.showToast({
         title: '提交失败',
@@ -162,12 +141,8 @@ Page({
       duration: 1000,
       selector: index === 1 ? '.business' : '.photo',
       offsetTop: -55,
-      success(res) {
-        console.log(`pageScrollTo调用成功`, res);
-      },
-      fail(err) {
-        console.log(`pageScrollTo调用失败`, err);
-      },
+      success(res) {},
+      fail(err) {},
     })
   },
   previewImage(e) {
@@ -182,12 +157,8 @@ Page({
     tt.previewImage({
       current: array[index],
       urls: array,
-      success: () => {
-        console.log("previewImage success");
-      },
-      fail: (e) => {
-        console.log(e);
-      }
+      success: () => {},
+      fail: (e) => {}
     });
   },
   setHeaderArr() {

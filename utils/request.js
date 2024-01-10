@@ -22,9 +22,22 @@ function request(method, url, data = {}, isBase = false) {
       header: header,
       data: method === POST ? JSON.stringify(data) : data,
       success: (res) => {
-        resolve(res);
+        const data = res.data
+        if (res.statusCode === 200 && data.code === 0) {
+          resolve(data.data)
+        } else {
+          tt.showToast({
+            title: '网络连接失败，请稍后重试',
+            icon: 'fail'
+          });
+          reject(data)
+        }
       },
       fail: (err) => {
+        tt.showToast({
+          title: '网络连接失败，请稍后重试',
+          icon: 'fail'
+        });
         reject(err);
       },
     });
