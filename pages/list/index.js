@@ -96,16 +96,9 @@ Page({
     })
   },
   jumpto(e) {
-    try {
-      const {
-        puid,
-        list
-      } = e.currentTarget.dataset.item
-      tt.navigateTo({
-        url: `/pages/detail/index?puid=${puid}&ad_placement_id=${list[0].ad_placement_id}`,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const item = e.currentTarget.dataset.item;
+    tt.navigateTo({
+      url: `/pages/home/index?array=${encodeURIComponent(JSON.stringify(item))}`,
+    });
   }
 })

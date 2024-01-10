@@ -1,0 +1,45 @@
+
+.layout {
+    background-color: #000;
+    min-height: 100vh;
+    background: url('image/bg3.png') no-repeat;
+    background-size: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.bg {
+    width: 100%;
+}
+
+.text {
+    color: #fff;
+    text-align: center;
+    font-size: 73rpx;
+    font-weight: bold;
+}
+
+.head {
+    width: 200rpx;
+    height: 200rpx;
+    border-radius: 50%;
+    border: 2rpx solid #fff;
+    margin: 100rpx 0rpx;
+}
+
+.button {
+    background: url('image/button.png') no-repeat;
+    background-size: 100%;
+    width: 610rpx;
+    height: 110rpx;
+    font-size: 40rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.button image {
+    width: 37rpx;
+    margin: 0rpx 10rpx;
+}

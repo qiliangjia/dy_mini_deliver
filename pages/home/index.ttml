@@ -1,0 +1,10 @@
+<view class="layout">
+    <view class="text" style="padding-top:260rpx;">欢迎来到</view>
+    <view class="text">{{info.dy_no || '超多可挂载表情包'}}的私人相册</view>
+    <image class="head" src="{{info.list[0].img_url || 'https://static.qiliangjia.com/static/dy-mini/meitu/home.jpg'}}"
+        mode="aspectFill"></image>
+    <view class="button" bindtap="jumptoButton">
+        <image src="/image/icon.png" mode="widthFix"></image>
+        查看广告，解锁相册
+    </view>
+</view>

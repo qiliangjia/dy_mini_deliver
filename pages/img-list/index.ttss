@@ -1,0 +1,21 @@
+.layout {
+    background-color: #000;
+    min-height: 100vh;
+    padding: 20rpx;
+}
+
+.bg {
+    width: 100%;
+}
+
+.imgList {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.img {
+    width: 335rpx;
+    height: 335rpx;
+    margin: 10rpx;
+    border-radius: 10rpx;
+}

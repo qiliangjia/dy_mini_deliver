@@ -20,7 +20,7 @@ function request(method, url, data = {}) {
       data.project_id = 23
     }
     if (!data.appid) {
-      data.appid = appId
+      data.appid = 'ttd549a3f44a7a2d0d01'
     }
     tt.request({
       url: baseUrl + url,
