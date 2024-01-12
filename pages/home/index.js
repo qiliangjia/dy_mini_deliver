@@ -13,7 +13,7 @@ Page({
   },
   setAd() {
     this.ad = tt.createRewardedVideoAd({
-      adUnitId: "joxrb9opywkb7jj8w0",
+      adUnitId: "hbk8v85lfydkzmynjn",
     });
     this.ad.onClose((data) => {
       tt.hideLoading();
