@@ -1,5 +1,11 @@
 {
   "pages": [
+    "pages/home-info/index",
+    "pages/company-info/index",
+    "pages/prdouct-info/index",
+    "pages/new-dynamic/index",
+    "pages/sumbit-info/index",
+    "pages/detail/index",
     "pages/home/index"
   ],
   "window": {

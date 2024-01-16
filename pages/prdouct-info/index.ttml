@@ -1,0 +1,11 @@
+<view class="layout">
+    <view class="info">
+        <view class="info-item" tt:for="{{ miniappInfo.products }}" tt:key="index">
+            <image src="{{ item.photos[0].url }}" mode="aspectFill"></image>
+            <view class="info-bot">
+                <view class="info-prop">{{ item.title }}</view>
+                <view class="info-btn" bindtap="jumptoDetail" data-item="{{item}}">查看详情</view>
+            </view>
+        </view>
+    </view>
+</view>

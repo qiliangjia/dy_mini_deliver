@@ -1,0 +1,97 @@
+<view class="layout">
+    <swiper class="swiper" bindchange="swiperChange" circular="true">
+        <block tt:for="{{miniappInfo.banner}}" tt:key="index">
+            <swiper-item>
+                <view class="swiper-item">
+                    <image class="img" src="{{item.url || item}}" mode="aspectFill" />
+                </view>
+            </swiper-item>
+        </block>
+    </swiper>
+    <view class="swiper-block">
+        <text tt:for="{{miniappInfo.banner}}" tt:key="index"
+            class="active {{current === index ? 'selected':''}}"></text>
+    </view>
+    <view class="swiper_view">
+        <swiper class="swiper_container" vertical="false" autoplay="true" circular="true" interval="2000">
+            <block wx:for="{{textArr}}" wx:key="index">
+                <swiper-item>
+                    <view class="swiper_item">
+                        <view class="item_head">
+                            <image src="{{item.avatar}}" mode="aspectFill" />
+                        </view>
+                        <view class="item">{{item.name}} 刚刚访问并建立联系</view>
+                    </view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
+
+    <view class="tab">
+        <view class="tab-item" tt:for="{{tabList}}" tt:key="index" bindtap="jumptotab" data-item="{{item}}">
+            <image src="{{item.src}}" mode="widthFix"></image>
+            <view class="tab-title">{{item.name}}</view>
+        </view>
+    </view>
+
+    <view class="info">
+        <view class="info-top" bindtap="jumptotab" data-path="company-info">
+            <view class="info-title">公司简介</view>
+            <view class="info-detail">查看更多
+                <image src="/image/home-info/icon-back.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <view style="font-size: 30rpx;">{{ miniappInfo.introduce }}</view>
+    </view>
+
+    <view class="info">
+        <view class="info-top" bindtap="jumptotab" data-path="prdouct-info">
+            <view class="info-title">产品介绍</view>
+            <view class="info-detail">查看更多
+                <image src="/image/home-info/icon-back.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="info-item" tt:for="{{ miniappInfo.products }}" tt:key="index">
+            <image src="{{ item.photos[0].url }}" mode="aspectFill"></image>
+            <view class="info-bot">
+                <view class="info-prop">{{ item.title }}</view>
+                <view class="info-btn" bindtap="jumptoDetail" data-item="{{item}}">查看详情</view>
+            </view>
+        </view>
+    </view>
+
+    <view class="info">
+        <view class="info-top" bindtap="jumptotab" data-path="new-dynamic">
+            <view class="info-title">新闻动态</view>
+            <view class="info-detail">查看更多
+                <image src="/image/home-info/icon-back.png" mode="widthFix"></image>
+            </view>
+        </view>
+        <view class="new-item" tt:for="{{ miniappInfo.news }}" tt:key="index" bindtap="jumptoDetail"
+            data-item="{{item}}">
+            <view class="new-left">
+                <view class="new-title">{{ item.title }}</view>
+                <view class="new-prop">{{ item.content }}</view>
+            </view>
+            <image src="{{ item.photos[0].url }}" mode="aspectFill"></image>
+        </view>
+    </view>
+
+    <view class="info" style="margin-bottom: 100rpx;">
+        <view class="info-title">留言反馈</view>
+        <view class="info-tips">愉快的合作，从第一次沟通开始！</view>
+        <view class="info-input">
+            <view class="info-input-title">姓名</view>
+            <input value="{{ info.name }}" placeholder="请输入姓名" bindinput="nameInput"></input>
+        </view>
+        <view class="info-input">
+            <view class="info-input-title">联系方式</view>
+            <input value="{{ info.mobile }}" placeholder="请输入联系方式" maxlength="11" bindinput="phoneInput"></input>
+        </view>
+        <view class="info-text">
+            <view class="info-input-title">留言内容</view>
+            <textarea value="{{ info.desc }}" placeholder="请输入留言" bindinput="descInput"></textarea>
+        </view>
+        <view class="info-sub" bindtap="sumbit">提 交</view>
+    </view>
+</view>

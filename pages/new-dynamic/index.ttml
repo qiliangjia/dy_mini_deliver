@@ -1,0 +1,9 @@
+<view class="layout">
+    <view class="new-item" tt:for="{{ miniappInfo.news }}" tt:key="index" bindtap="jumptoDetail" data-item="{{item}}">
+        <view class="new-left">
+            <view class="new-title">{{ item.title }}</view>
+            <view class="new-prop">{{ item.content }}</view>
+        </view>
+        <image src="{{ item.photos[0].url }}" mode="aspectFill"></image>
+    </view>
+</view>

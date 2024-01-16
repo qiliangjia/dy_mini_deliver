@@ -27,13 +27,6 @@
     </view>
     <view class="block">
         <image class="head" src="/image/icon-bg.png" mode="widthFix"></image>
-        <!-- <view class="detail">
-            <view class="icon">
-                <image src="/image/icon-company.png" mode="widthFix"></image>
-            </view>
-            公司名称：
-            <text>{{ companyInfo.companyName }}</text>
-        </view> -->
         <view class="detail">
             <view class="icon">
                 <image src="/image/icon-name.png" mode="widthFix"></image>

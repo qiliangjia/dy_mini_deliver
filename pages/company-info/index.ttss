@@ -1,0 +1,114 @@
+.layout {
+    width: 100%;
+    min-height: 100vh;
+    background-color: #F5F5F5;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.tab {
+    width: 100%;
+    min-height: 120rpx;
+    background-color: #fff;
+    padding: 30rpx;
+    display: flex;
+    justify-content: space-around;
+}
+
+.tab-item {
+    font-size: 34rpx;
+    color: #999999;
+    text-align: center;
+}
+
+.actice {
+    color: #222222;
+    position: relative;
+}
+
+.tab-tips {
+    min-width: 100rpx;
+    height: 10rpx;
+    border-radius: 6rpx;
+    background-color: #5D64FF;
+    margin-top: -12rpx;
+}
+
+.info {
+    width: 710rpx;
+    padding: 30rpx;
+    background-color: #FFFFFF;
+    margin: 20rpx 0;
+    border-radius: 20rpx;
+    box-shadow: 0 0 15rpx rgba(192, 192, 192, 0.20);
+    position: relative;
+    font-size: 26rpx;
+}
+
+.head {
+    width: 159rpx;
+    position: absolute;
+    right: 20rpx;
+    top: 15rpx;
+}
+
+.detail {
+    display: flex;
+    color: #888888;
+    font-size: 28rpx;
+    margin: 10rpx 0rpx;
+}
+
+.icon {
+    display: flex;
+    align-items: center;
+}
+
+.icon image {
+    width: 34rpx;
+    margin-right: 10rpx;
+}
+
+.detail text {
+    color: #000;
+}
+
+.online {
+    width: 101rpx;
+    height: 41rpx;
+    margin-left: 10rpx;
+}
+
+.good {
+    position: absolute;
+    right: 30rpx;
+    bottom: 30rpx;
+    width: 193rpx;
+    height: 66rpx;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 28rpx;
+    color: #E41000;
+    border: 2rpx solid #E40F00;
+    border-radius: 33rpx;
+}
+
+.good image {
+    width: 33rpx;
+    min-height: 39rpx;
+    margin-right: 10rpx;
+}
+
+.photo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.photo image {
+    width: 710rpx;
+    border-radius: 20rpx;
+    margin-bottom: 20rpx;
+}

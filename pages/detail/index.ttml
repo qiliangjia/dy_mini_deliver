@@ -1,0 +1,5 @@
+<view class="layout">
+    <image class="img" src="{{ array.photos[0].url }}" mode="widthFix"></image>
+    <view class="title">{{array.title}}</view>
+    <view class="content">{{array.content}}</view>
+</view>

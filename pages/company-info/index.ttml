@@ -1,0 +1,39 @@
+<view class="layout">
+    <view class="tab">
+        <view class="tab-item {{ tab === item.value ? 'actice':'' }}" tt:for="{{tabList}}" tt:key="index"
+            bindtap="changeTab" data-index="{{item.value}}">
+            {{item.name}}
+            <view class="tab-tips" tt:if="{{ tab === item.value }}"></view>
+        </view>
+    </view>
+    <view class="info" tt:if="{{ tab === 1 }}">{{ miniappInfo.introduce }}</view>
+    <view class="info" tt:if="{{ tab === 2 }}">
+        <image class="head" src="/image/icon-bg.png" mode="widthFix"></image>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-name.png" mode="widthFix"></image>
+            </view>
+            联系人：
+            <text>{{ miniappInfo.contactName }}</text>
+        </view>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-zw.png" mode="widthFix"></image>
+            </view>
+            职位：
+            <text>{{miniappInfo.contactPosition}}</text>
+        </view>
+        <view class="detail">
+            <view class="icon">
+                <image src="/image/icon-phone.png" mode="widthFix"></image>
+            </view>
+            联系方式：
+            <text>{{ miniappInfo.phone }}</text>
+        </view>
+    </view>
+    <view class="photo" tt:if="{{ tab === 3 }}">
+        <image tt:for="{{miniappInfo.companyPhoto}}" tt:key="index" src="{{item.url || item}}" bindtap="previewImage"
+            data-index="{{index}}" data-list="{{miniappInfo.companyPhoto}}" mode="widthFix">
+        </image>
+    </view>
+</view>
