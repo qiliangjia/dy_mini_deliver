@@ -32,6 +32,7 @@ Page({
       rd_str: e.detail.value
     })
   },
+  
   onSearch() {
     if (!this.data.rd_str.trim()) {
       tt.showToast({
