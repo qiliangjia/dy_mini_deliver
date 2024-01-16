@@ -17,10 +17,10 @@ function request(method, url, data = {}) {
       data.channel = 2
     }
     if (!data.project_id) {
-      data.project_id = 23
+      data.project_id = 21
     }
     if (!data.appid) {
-      data.appid = 'ttd549a3f44a7a2d0d01'
+      data.appid = appId
     }
     tt.request({
       url: baseUrl + url,

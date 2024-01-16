@@ -1,6 +1,6 @@
 .layout {
     width: 100%;
-    background: #F0F3FC url('image/bg.png') no-repeat;
+    background: #FEF6EA url('https://static.qiliangjia.com/static/dy-mini/mount/bg-6.png') no-repeat;
     background-size: 100%;
     min-height: 100vh;
     display: flex;

@@ -58,8 +58,6 @@ Page({
         title: '密钥无效',
         icon: 'fail'
       });
-    }).finally(() => {
-      tt.hideLoading();
     })
   },
   getList() {
@@ -79,6 +77,7 @@ Page({
         tt.showToast({
           title: '没有更多了',
         });
+        this.getShList()
       } else {
         this.setData({
           list: this.data.list.concat(item)
@@ -95,10 +94,30 @@ Page({
       });
     })
   },
+  getShList() {
+    tt.showLoading({
+      title: '加载中...',
+    });
+    api.getUserList({
+      page: this.data.page,
+      limit: this.data.limit,
+      project_id: 23,
+      appid: 'ttd549a3f44a7a2d0d01'
+    }).then((res) => {
+      const item = res.data.list
+      this.setData({
+        list: this.data.list.concat(item)
+      })
+      tt.hideLoading();
+    })
+  },
   jumpto(e) {
-    const item = e.currentTarget.dataset.item;
+    const {
+      list,
+      ...newArray
+    } = e.currentTarget.dataset.item;
     tt.navigateTo({
-      url: `/pages/home/index?array=${encodeURIComponent(JSON.stringify(item))}`,
+      url: `/pages/detail/index?${obj2Param(newArray)}`,
     });
   }
 })
