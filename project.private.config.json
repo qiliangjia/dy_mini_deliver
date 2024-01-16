@@ -27,6 +27,6 @@
         }
     },
     "setting": {
-        "urlCheck": false
+        "urlCheck": true
     }
 }
