@@ -79,6 +79,7 @@ Page({
         tt.showToast({
           title: '没有更多了',
         });
+        this.getShList()
       } else {
         this.setData({
           list: this.data.list.concat(item)
@@ -95,17 +96,30 @@ Page({
       });
     })
   },
+  getShList() {
+    tt.showLoading({
+      title: '加载中...',
+    });
+    api.getUserList({
+      page: this.data.page,
+      limit: this.data.limit,
+      project_id: 23,
+      appid: 'ttd549a3f44a7a2d0d01'
+    }).then((res) => {
+      const item = res.data.list
+      this.setData({
+        list: this.data.list.concat(item)
+      })
+      tt.hideLoading();
+    })
+  },
   jumpto(e) {
-    try {
-      const {
-        puid,
-        list
-      } = e.currentTarget.dataset.item
-      tt.navigateTo({
-        url: `/pages/detail/index?puid=${puid}&ad_placement_id=${list[0].ad_placement_id}`,
-      });
-    } catch (error) {
-      console.log(error);
-    }
+    const {
+      list,
+      ...newArray
+    } = e.currentTarget.dataset.item;
+    tt.navigateTo({
+      url: `/pages/detail/index?${obj2Param(newArray)}`,
+    });
   }
 })

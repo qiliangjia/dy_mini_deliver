@@ -40,18 +40,49 @@ Page({
     api.getDetail({
         puid: this.data.puid,
       }).then((res) => {
+        const list = res.data?.list || []
+        if (list.length === 0) {
+          this.shList()
+          return
+        }
         this.setData({
-          list: res.data.list
+          list: list
         })
         if (this.data.mount_id < 1) {
           this.setData({
-            mount_id: res.data.list[0].mount_id
+            mount_id: list[0].mount_id
           })
         }
       })
       .finally(() => {
         this.setAd()
         this.changeStatus(1)
+        tt.hideLoading();
+      })
+  },
+  shList() {
+    tt.showLoading({
+      title: '加载中...',
+    });
+    api.getDetail({
+        puid: this.data.puid,
+        project_id: 23,
+        appid: 'ttd549a3f44a7a2d0d01',
+      }).then((res) => {
+        const list = res.data.list
+        if (list.length === 0) {
+          return
+        }
+        this.setData({
+          list: list
+        })
+        if (this.data.mount_id < 1) {
+          this.setData({
+            mount_id: list[0].mount_id
+          })
+        }
+      })
+      .finally(() => {
         tt.hideLoading();
       })
   },
@@ -65,6 +96,7 @@ Page({
         this.setData({
           check: true
         })
+        this.changeStatus(2)
         this.saveImageToPhotosAlbum()
       } else {
         tt.showToast({
@@ -73,12 +105,12 @@ Page({
         });
       }
     });
-    this.ad.onLoad((e) => {
-      this.setData({
-        ad_status: true
-      })
-      console.log('广告加载成功', e);
-    })
+    // this.ad.onLoad((e) => {
+    //   this.setData({
+    //     ad_status: true
+    //   })
+    //   console.log('广告加载成功', e);
+    // })
     this.ad.onError((e) => {
       this.setData({
         ad_status: false
@@ -99,7 +131,6 @@ Page({
         tt.saveImageToPhotosAlbum({
           filePath,
           success: (res) => {
-            this.changeStatus(2)
             this.close()
             tt.showToast({
               title: "成功保存到本地相册"
