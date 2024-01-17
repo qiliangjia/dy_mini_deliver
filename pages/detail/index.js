@@ -177,14 +177,11 @@ Page({
     })
   },
   openPopup() {
-    if (this.data.check) {
-      this.saveImageToPhotosAlbum()
-      return
-    }
-    if (!this.data.ad_status) {
+    if (this.data.check || !this.data.ad_status) {
       this.setData({
         check: true
       })
+      this.saveImageToPhotosAlbum()
       return
     }
     this.setData({
