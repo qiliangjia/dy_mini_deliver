@@ -96,6 +96,7 @@ Page({
         this.setData({
           check: true
         })
+        this.changeStatus(2)
         this.saveImageToPhotosAlbum()
       } else {
         tt.showToast({
@@ -130,7 +131,6 @@ Page({
         tt.saveImageToPhotosAlbum({
           filePath,
           success: (res) => {
-            this.changeStatus(2)
             this.close()
             tt.showToast({
               title: "成功保存到本地相册"
