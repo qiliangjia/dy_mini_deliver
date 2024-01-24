@@ -35,7 +35,7 @@ Page({
     miniappInfo: {}
   },
   onLoad: function (options) {
-    this.getContent()
+    this.getContent(options)
     this.setHeaderArr()
   },
   jumptotab(e) {
@@ -51,19 +51,20 @@ Page({
       });
     }
   },
-  getContent() {
+  getContent(options) {
     tt.showLoading({
       title: '加载中...',
     });
     const {
       microapp: {
-        appId,
         envType
       }
     } = tt.getEnvInfoSync();
-    api_els.getContent(appId).then((res) => {
+    api.getPuidContent({
+      puid: options?.puid || '202331218486001869'
+    }).then((res) => {
       const item = res;
-      const request = item?.info?.result || {};
+      const request = JSON.parse(item?.info?.result) || {};
       const miniInfo = request?.miniInfo || {};
 
       const isPublished = envType === 'production';

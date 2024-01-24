@@ -13,7 +13,6 @@ Page({
     this.setData({
       miniappInfo: JSON.parse(decodeURIComponent(options.miniappInfo)) || {}
     })
-    console.log(this.data.miniappInfo);
   },
   phoneInput(e) {
     this.setData({

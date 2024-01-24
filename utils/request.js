@@ -46,6 +46,7 @@ function request(method, url, data = {}, isBase = false) {
 const Api = {
   getInfo: (data) => request(GET, `/project16/company/info`, data),
   setMobile: (data) => request(GET, `/user/company/mobile/add`, data),
+  getPuidContent: (data) => request(GET, `/user/company/info`, data),
 };
 module.exports = {
   Api,

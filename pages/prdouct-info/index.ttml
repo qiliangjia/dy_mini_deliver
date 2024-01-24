@@ -1,5 +1,5 @@
 <view class="layout">
-    <view class="info">
+    <view class="info" tt:if="{{ miniappInfo.products.length !== 0 }}">
         <view class="info-item" tt:for="{{ miniappInfo.products }}" tt:key="index">
             <image src="{{ item.photos[0].url }}" mode="aspectFill"></image>
             <view class="info-bot">

@@ -19,7 +19,6 @@ Page({
       miniappInfo: JSON.parse(decodeURIComponent(options.miniappInfo)) || {},
       tab: Number(options?.index) || 1
     })
-    console.log(this.data.miniappInfo);
     this.setLink()
   },
   changeTab(e) {

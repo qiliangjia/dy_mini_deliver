@@ -12,6 +12,16 @@
                     "launchFrom": "search_used_list",
                     "location": "",
                     "mockUpdateType": "Noupdate"
+                },
+                {
+                    "id": 1706082249863,
+                    "name": "pages/home-info/index",
+                    "pathName": "pages/home-info/index",
+                    "query": "project_id=16&puid=201631206102805111&uuid=401640111753230064",
+                    "scene": "024012",
+                    "launchFrom": "share_zlink",
+                    "location": "message",
+                    "mockUpdateType": "Noupdate"
                 }
             ]
         }
