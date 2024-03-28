@@ -26,10 +26,6 @@ function request(method, url, data = {}, isBase = false) {
         if (res.statusCode === 200 && data.code === 0) {
           resolve(data.data)
         } else {
-          tt.showToast({
-            title: '网络连接失败，请稍后重试',
-            icon: 'fail'
-          });
           reject(data)
         }
       },
@@ -47,6 +43,7 @@ const Api = {
   getInfo: (data) => request(GET, `/project16/company/info`, data),
   setMobile: (data) => request(GET, `/user/company/mobile/add`, data),
   getPuidContent: (data) => request(GET, `/user/company/info`, data),
+  getClue: (data) => request(GET, `/clue/get`, data)
 };
 module.exports = {
   Api,

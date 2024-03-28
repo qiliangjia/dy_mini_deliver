@@ -32,11 +32,36 @@ Page({
       desc: ''
     },
     textArr: [],
-    miniappInfo: {}
+    miniappInfo: {},
+    showClue: false,
+    clueComponentId: ''
   },
   onLoad: function (options) {
+    this.getClueId()
     this.getContent(options)
     this.setHeaderArr()
+  },
+  getClueId() {
+    api.getClue().then((res) => {
+      if (res?.config_id) {
+        this.setData({
+          showClue: true,
+          clueComponentId: res.config_id
+        })
+      }
+    })
+  },
+  getPhoneNumber(e) {
+    const {
+      encryptedData,
+      iv,
+      errMsg,
+    } = e.detail
+    if (encryptedData && iv && errMsg === 'getPhoneNumber:ok') {
+      sumbit()
+    }else{
+      console.log(e);
+    }
   },
   jumptotab(e) {
     const arr = e.currentTarget.dataset

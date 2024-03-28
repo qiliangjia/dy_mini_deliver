@@ -282,6 +282,8 @@
     align-items: center;
     justify-content: center;
     color: #FFFFFF;
+    letter-spacing: 5rpx;
+    border: none;
 }
 
 .head {
